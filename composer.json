@@ -1,0 +1,63 @@
+{
+  "name": "jerker.eu",
+  "type": "website",
+  "license": "MIT",
+  "description": "A Wordpress stack for Jerker.eu based on Bedrock and Roots.",
+  "homepage": "http://github.com/synackdigital/jerker.eu",
+  "authors": [
+    {
+      "name": "Fredrik Broman",
+      "email": "frebro@gmail.com",
+      "homepage": "http://frebro.com"
+    }
+  ],
+  "support": {
+    "issues": "http://github.com/synackdigital/jerker.eu/issues"
+  },
+  "config": {
+    "preferred-install": "dist",
+    "generate-salts": true
+  },
+  "autoload": {
+    "psr-0": {"Bedrock\\Installer": "scripts"}
+  },
+  "scripts": {
+    "post-root-package-install": ["Bedrock\\Installer::addSalts"]
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://wpackagist.org"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "wordpress/wordpress",
+        "version": "3.9.1",
+        "type": "webroot",
+        "dist": {
+          "type": "zip",
+          "url": "https://wordpress.org/wordpress-3.9.1.zip"
+        },
+        "require" : {
+          "fancyguy/webroot-installer": "1.1.0"
+        }
+      }
+    }
+  ],
+  "require": {
+    "php": ">=5.3.2",
+    "wordpress/wordpress": "3.9.1",
+    "fancyguy/webroot-installer": "1.1.0",
+    "composer/installers": "v1.0.12",
+    "vlucas/phpdotenv": "~1.0.6"
+  },
+  "extra": {
+    "installer-paths": {
+      "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
+      "web/app/themes/{$name}/": ["type:wordpress-theme"]
+    },
+    "webroot-dir": "web/wp",
+    "webroot-package": "wordpress/wordpress"
+  }
+}
