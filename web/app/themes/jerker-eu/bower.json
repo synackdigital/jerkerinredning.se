@@ -1,0 +1,21 @@
+{
+  "name": "jerker-eu",
+  "version": "0.1.0",
+  "homepage": "http://jerker.eu",
+  "authors": [
+    "Fredrik Broman <fredrik@synack.se>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "assets/vendor"
+  ],
+  "dependencies": {
+    "modernizr": "2.8.2",
+    "jquery": "1.11.1",
+    "bootstrap": "3.2.0",
+    "respond": "1.4.2"
+  }
+}
