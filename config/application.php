@@ -24,6 +24,17 @@ if (file_exists($env_config)) {
 }
 
 /**
+ * Define environment URLs
+ */
+$envs = array(
+  'development' => 'http://local.jerker.eu',
+  'staging'     => 'http://staging.jerker.eu',
+  'production'  => 'http://jerker.eu'
+);
+define('ENVIRONMENTS', serialize($envs));
+
+
+/**
  * Custom Content Directory
  */
 define('CONTENT_DIR', '/app');
