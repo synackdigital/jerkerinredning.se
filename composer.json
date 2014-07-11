@@ -51,7 +51,8 @@
     "fancyguy/webroot-installer": "1.1.0",
     "composer/installers": "v1.0.12",
     "vlucas/phpdotenv": "~1.0.6",
-    "roots/wp-stage-switcher": "1.0.1"
+    "roots/wp-stage-switcher": "1.0.1",
+    "roots/soil": "3.0.0"
   },
   "extra": {
     "installer-paths": {
