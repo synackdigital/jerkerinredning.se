@@ -1,15 +1,15 @@
 {
-  "name": "sage",
+  "name": "jerkerinredning.se",
   "version": "8.0.0",
-  "author": "Ben Word <ben@benword.com>",
-  "homepage": "https://roots.io/sage/",
+  "author": "Fredrik Broman <frebro@gmail.com>",
+  "homepage": "https://github.com/synackdigital/jerkerinredning.se",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/roots/sage.git"
+    "url": "git://github.com/synackdigital/jerkerinredning.se.git"
   },
   "bugs": {
-    "url": "https://github.com/roots/sage/issues"
+    "url": "https://github.com/synackdigital/jerkerinredning.se/issues"
   },
   "licenses": [
     {
