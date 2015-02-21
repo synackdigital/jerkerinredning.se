@@ -24,17 +24,6 @@ if (file_exists($env_config)) {
 }
 
 /**
- * Define environment URLs
- */
-$envs = array(
-  'development' => 'http://local.jerker.eu',
-  'staging'     => 'http://staging.jerker.eu',
-  'production'  => 'http://jerker.eu'
-);
-define('ENVIRONMENTS', serialize($envs));
-
-
-/**
  * Custom Content Directory
  */
 define('CONTENT_DIR', '/app');
@@ -46,27 +35,19 @@ define('WP_CONTENT_URL', WP_HOME . CONTENT_DIR);
  */
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
-$table_prefix = 'wp_';
-
-/**
- * WordPress Localized Language
- * Default: English
- *
- * A corresponding MO file for the chosen language must be installed to app/languages
- */
-define('WPLANG', '');
+$table_prefix = getenv('DB_PREFIX') ? getenv('DB_PREFIX') : 'wp_';
 
 /**
  * Authentication Unique Keys and Salts
  */
-define('AUTH_KEY',         getenv('AUTH_KEY'));
-define('SECURE_AUTH_KEY',  getenv('SECURE_AUTH_KEY'));
-define('LOGGED_IN_KEY',    getenv('LOGGED_IN_KEY'));
-define('NONCE_KEY',        getenv('NONCE_KEY'));
-define('AUTH_SALT',        getenv('AUTH_SALT'));
+define('AUTH_KEY', getenv('AUTH_KEY'));
+define('SECURE_AUTH_KEY', getenv('SECURE_AUTH_KEY'));
+define('LOGGED_IN_KEY', getenv('LOGGED_IN_KEY'));
+define('NONCE_KEY', getenv('NONCE_KEY'));
+define('AUTH_SALT', getenv('AUTH_SALT'));
 define('SECURE_AUTH_SALT', getenv('SECURE_AUTH_SALT'));
-define('LOGGED_IN_SALT',   getenv('LOGGED_IN_SALT'));
-define('NONCE_SALT',       getenv('NONCE_SALT'));
+define('LOGGED_IN_SALT', getenv('LOGGED_IN_SALT'));
+define('NONCE_SALT', getenv('NONCE_SALT'));
 
 /**
  * Custom Settings
