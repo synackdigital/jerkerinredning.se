@@ -1,9 +1,9 @@
 {
-  "name": "jerker.eu",
+  "name": "jerkerinredning.se",
   "type": "website",
   "license": "MIT",
-  "description": "A Wordpress stack for Jerker.eu based on Roots/Bedrock and Roots/Sage.",
-  "homepage": "http://github.com/synackdigital/jerker.eu",
+  "description": "A Wordpress stack for jerkerinredning.se based on Roots/Bedrock and Roots/Sage.",
+  "homepage": "http://github.com/synackdigital/jerkerinredning.se",
   "authors": [
     {
       "name": "Fredrik Broman",
