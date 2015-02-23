@@ -69,14 +69,6 @@ var cssTasks = function(filename) {
           console.warn(err.message);
         }));
       })
-      .pipe(function() {
-        return $.if('*.scss', $.sass({
-          outputStyle: 'nested', // libsass doesn't support expanded yet
-          precision: 10,
-          includePaths: ['.'],
-          onError: console.error.bind(console, 'Sass error:')
-        }));
-      })
       .pipe($.concat, filename)
       .pipe($.pleeease, {
         autoprefixer: {
@@ -228,7 +220,7 @@ gulp.task('watch', function() {
 gulp.task('build', ['styles', 'scripts', 'fonts', 'images']);
 
 // ### Wiredep
-// `gulp wiredep` - Automatically inject Less and Sass Bower dependencies. See
+// `gulp wiredep` - Automatically inject Less Bower dependencies. See
 // https://github.com/taptapship/wiredep
 gulp.task('wiredep', function() {
   var wiredep = require('wiredep').stream;
