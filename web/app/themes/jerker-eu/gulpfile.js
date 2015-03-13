@@ -42,7 +42,9 @@ var enabled = {
   // Enable static asset revisioning when `--production`
   rev: argv.production,
   // Disable source maps when `--production`
-  maps: !argv.production
+  maps: !argv.production,
+  // Fail styles task on error when `--production`
+  failStyleTask: argv.production
 };
 
 // Path to the compiled assets manifest in the dist directory
@@ -60,14 +62,14 @@ var revManifest = path.dist + 'assets.json';
 // ```
 var cssTasks = function(filename) {
   return lazypipe()
-    .pipe($.plumber)
+    .pipe(function() {
+      return $.if(!enabled.failStyleTask, $.plumber());
+    })
     .pipe(function() {
       return $.if(enabled.maps, $.sourcemaps.init());
     })
       .pipe(function() {
-        return $.if('*.less', $.less().on('error', function(err) {
-          console.warn(err.message);
-        }));
+        return $.if('*.less', $.less());
       })
       .pipe($.concat, filename)
       .pipe($.pleeease, {
@@ -129,11 +131,20 @@ var writeToManifest = function(directory) {
 
 // ### Styles
 // `gulp styles` - Compiles, combines, and optimizes Bower CSS and project CSS.
-gulp.task('styles', function() {
+// By default this task will only log a warning if a precompiler error is
+// raised. If the `--production` flag is set: this task will fail outright.
+gulp.task('styles', ['wiredep'], function() {
   var merged = merge();
   manifest.forEachDependency('css', function(dep) {
+    var cssTasksInstance = cssTasks(dep.name);
+    if (!enabled.failStyleTask) {
+      cssTasksInstance.on('error', function(err) {
+        console.error(err.message);
+        this.emit('end');
+      });
+    }
     merged.add(gulp.src(dep.globs, {base: 'styles'})
-      .pipe(cssTasks(dep.name)));
+      .pipe(cssTasksInstance));
   });
   return merged
     .pipe(writeToManifest('styles'));
@@ -226,7 +237,9 @@ gulp.task('wiredep', function() {
   var wiredep = require('wiredep').stream;
   return gulp.src(project.css)
     .pipe(wiredep())
-    .pipe($.changed(path.source + 'styles'))
+    .pipe($.changed(path.source + 'styles', {
+      hasChanged: $.changed.compareSha1Digest
+    }))
     .pipe(gulp.dest(path.source + 'styles'));
 });
 
