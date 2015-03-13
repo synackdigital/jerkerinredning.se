@@ -31,3 +31,11 @@ function excerpt_more() {
   return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'sage') . '</a>';
 }
 add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
+
+/**
+ * Disable the default Tiny MCE editor for pages
+ */
+function remove_editor() {
+  remove_post_type_support('page', 'editor');
+}
+add_action('admin_init', __NAMESPACE__ . '\\remove_editor');
