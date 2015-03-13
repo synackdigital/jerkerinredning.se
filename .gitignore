@@ -9,6 +9,7 @@ sql-dump-*.sql
 # Dotenv
 .env
 .env.*
+!.env.example
 
 # Application
 web/app/plugins/*
