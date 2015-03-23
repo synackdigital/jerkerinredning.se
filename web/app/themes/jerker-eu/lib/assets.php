@@ -122,6 +122,8 @@ function assets() {
   wp_enqueue_script('modernizr', asset_path('scripts/modernizr.js'), [], null, true);
   wp_enqueue_script('jquery');
   wp_enqueue_script('sage_js', asset_path('scripts/main.js'), [], null, true);
+
+  wp_localize_script('sage_js', 'PHPVAR', php_to_js_vars());
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
 
@@ -172,3 +174,13 @@ if (GOOGLE_ANALYTICS_ID) {
   add_action('wp_footer', __NAMESPACE__ . '\\google_analytics', 20);
 }
 
+/**
+ * Load up PHP parameters to make them available in js
+ */
+function php_to_js_vars() {
+  return [
+    'instagram_client_id' => get_field('instagram_client_id', 'option'),
+    'instagram_user_id' => get_field('instagram_user_id', 'option'),
+    'instagram_access_token' => get_field('instagram_access_token', 'option')
+  ];
+}

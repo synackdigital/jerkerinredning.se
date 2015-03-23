@@ -26,6 +26,26 @@
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
+
+        // Initialize Instafeed canvases
+        $('.instafeed-canvas').each(function(i) {
+          uniqid = Date.now();
+
+          $this = $(this);
+          $this.attr('id', 'instafeed-canvas-'+uniqid);
+
+          var feed = new Instafeed({
+            target: $this.attr('id'),
+            clientId: PHPVAR.instagram_client_id,
+            userId: parseInt(PHPVAR.instagram_user_id),
+            accessToken: PHPVAR.instagram_access_token,
+            get: $this.data('get'),
+            limit: parseInt($this.data('count')),
+            resolution: $this.data('resolution')
+          });
+          feed.run();
+        });
+
       }
     },
     // Home page

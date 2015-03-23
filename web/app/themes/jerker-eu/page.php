@@ -10,6 +10,7 @@ while (have_posts()) : the_post();
 
   if (have_rows('layouts')) :
     while (have_rows('layouts')) : the_row();
+      echo get_row_layout();
       get_template_part('templates/acf', get_row_layout());
     endwhile;
   endif;
