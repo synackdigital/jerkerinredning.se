@@ -2,9 +2,12 @@
 
 $headline = get_sub_field('headline');
 
-$number_of_images = get_sub_field('image_count');
-$image_resolution = get_sub_field('image_resolution');
-$link_images = get_sub_field('image_links');
+$instafeed_data = [
+  'get' => 'user',
+  'limit' => get_sub_field('limit'),
+  'resolution' => get_sub_field('resolution'),
+  'links' => get_sub_field('links')
+];
 
 ?>
 
@@ -14,11 +17,6 @@ $link_images = get_sub_field('image_links');
   <h1 class="acf-headline"><?php echo $headline; ?></h1>
   <?php endif; ?>
 
-  <div class="instafeed-canvas"
-    data-get="user"
-    data-count="<?php echo $number_of_images; ?>"
-    data-resolution="<?php echo $image_resolution; ?>"
-    data-links="<?php echo $link_images; ?>"
-  ></div>
+  <div class="instafeed-canvas" data-instafeed="<?php echo htmlentities(json_encode($instafeed_data), ENT_QUOTES); ?>"></div>
 
 </section>

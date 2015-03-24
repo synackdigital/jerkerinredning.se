@@ -34,16 +34,21 @@
           $this = $(this);
           $this.attr('id', 'instafeed-canvas-'+uniqid);
 
-          var feed = new Instafeed({
+          $instafeed_data = $this.data('instafeed');
+
+          var instafeed = new Instafeed({
             target: $this.attr('id'),
+
             clientId: PHPVAR.instagram_client_id,
             userId: parseInt(PHPVAR.instagram_user_id),
             accessToken: PHPVAR.instagram_access_token,
-            get: $this.data('get'),
-            limit: parseInt($this.data('count')),
-            resolution: $this.data('resolution')
+
+            get: $instafeed_data.get,
+            limit: parseInt($instafeed_data.limit),
+            resolution: $instafeed_data.resolution,
+            links: $instafeed_data.links
           });
-          feed.run();
+          instafeed.run();
         });
 
       }
