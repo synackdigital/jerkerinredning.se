@@ -46,3 +46,29 @@ function is_element_empty($element) {
   $element = trim($element);
   return !empty($element);
 }
+
+/**
+ * Append youtube oembed params
+ */
+function youtube_embed_params($iframe, $params) {
+
+  // Save the URL from the iframe html
+  preg_match('/src="(.+?)"/', $iframe, $iframe_matches);
+  $src = $iframe_matches[1];
+
+  // Separate video ID from the URL and add to params
+  preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $src, $src_matches);
+  $params['playlist'] = $src_matches[1];
+
+  // Append params to URL
+  $new_src = add_query_arg($params, $src);
+
+  // replace the old iframe URL with the new
+  $iframe = str_replace($src, $new_src, $iframe);
+
+  // Add iframe attributes
+  $attributes = 'frameborder="0"';
+  $iframe = str_replace('></iframe>', ' ' . $attributes . '></iframe>', $iframe);
+
+  return $iframe;
+}
