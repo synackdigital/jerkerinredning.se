@@ -1,3 +1,13 @@
+
+// Colors
+@gray-darker:            #252729; // Pantone 426 C
+@gray-dark:              mix(@gray, @gray-darker);
+@gray:                   #8a8b8c; // Pantone 423 C
+@gray-light:             mix(@gray, white, 50%);
+@gray-lighter:           mix(@gray, white, 90%);
+
+@brand-primary:           #27ae60;
+
 // Typography
 @font-family-sans-serif:  'Gotham Narrow A', 'Gotham Narrow B', sans-serif;
 @font-family-serif-24:    'Didot 24 A', 'Didot 24 B', serif;
@@ -26,33 +36,22 @@
 @headings-line-height:    1.1;
 
 // Grid settings
-@main-sm-columns:         @grid-columns;
-@sidebar-sm-columns:      4;
-
-// Colors
-@brand-primary:           #27ae60;
+@grid-gutter-width:         64px;
 
 // Navbar
 @navbar-height:                    120px;
 @navbar-margin-bottom:             0;
 @navbar-border-radius:             0;
-
-@navbar-default-color:             @gray-lighter;
-@navbar-default-bg:                fade(black, 20%);
-@navbar-default-border:            fade(black, 30%);
-
-// Navbar links
+@navbar-default-color:             white;
+@navbar-default-bg:                transparent;
+@navbar-default-border:            transparent;
 @navbar-default-link-color:                @navbar-default-color;
-@navbar-default-link-hover-color:          white;
+@navbar-default-link-hover-color:          @brand-primary;
 @navbar-default-link-active-color:         @navbar-default-link-hover-color;
 @navbar-default-link-active-bg:            transparent;
 @navbar-default-link-disabled-color:       @navbar-default-color;
-
-// Navbar brand label
 @navbar-default-brand-color:               @navbar-default-link-color;
 @navbar-default-brand-hover-color:         @navbar-default-link-hover-color;
-
-// Navbar toggle
 @navbar-default-toggle-hover-bg:           transparent;
-@navbar-default-toggle-icon-bar-bg:        @gray-lighter;
+@navbar-default-toggle-icon-bar-bg:        white;
 @navbar-default-toggle-border-color:       transparent;

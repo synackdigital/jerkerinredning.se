@@ -5,6 +5,7 @@ namespace Roots\Sage;
 $headline = get_sub_field('headline');
 $description = get_sub_field('description');
 $text_color = get_sub_field('text_color');
+$background_color = get_sub_field('background_color');
 
 $oembed = Utils\youtube_embed_params(get_sub_field('oembed'), array(
   'modestbranding'  => '1',
@@ -20,12 +21,12 @@ $oembed = Utils\youtube_embed_params(get_sub_field('oembed'), array(
 
 ?>
 
-<section class="acf acf-embed">
+<section class="acf acf-embed" style="color:<?php echo $text_color; ?>;background-color:<?php echo $background_color; ?>;">
 
   <div class="embed-container"><?php echo $oembed; ?></div>
 
-  <div class="content" style="color:<?php echo $text_color; ?>">
-    <div class="container">
+  <div class="content">
+    <div class="container-fluid">
 
       <?php if ($headline) : ?>
       <div class="row">
