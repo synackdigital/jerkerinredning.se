@@ -34,7 +34,7 @@ $link = array(
 
       <?php if ($headline) : ?>
       <div class="row">
-        <div class="col-xs-12 col-sm-6 col-lg-4">
+        <div class="col-xs-12 col-sm-10 col-lg-8">
           <h1 class="headline"><?php echo $headline; ?></h1>
         </div>
       </div>
@@ -42,7 +42,7 @@ $link = array(
 
       <?php if ($description) : ?>
       <div class="row">
-        <div class="col-xs-12 col-sm-6 col-lg-4">
+        <div class="col-xs-12 col-sm-10 col-lg-8">
           <?php echo $description; ?>
         </div>
       </div>
@@ -53,7 +53,7 @@ $link = array(
 
   <?php if (count($link) >= 2) : ?>
   <div class="call-to-action">
-    <a class="btn btn-lg btn-primary" href="<?php echo $link['url']; ?>"><?php echo $link['label']; ?></a>
+    <a class="btn btn-primary" href="<?php echo $link['url']; ?>"><?php echo $link['label']; ?></a>
   </div>
   <?php endif; ?>
 

@@ -96,6 +96,7 @@ function bower_map_to_cdn($dependency, $fallback) {
 
 function assets() {
   wp_enqueue_style('sage_css', asset_path('styles/main.css'), false, null);
+  wp_enqueue_style('fonts_css', '//cloud.typography.com/7770232/618726/css/fonts.css', false, null);
 
   /**
    * Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline

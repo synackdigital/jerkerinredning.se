@@ -1,0 +1,18 @@
+
+// Typography
+
+body { text-rendering: optimizeLegibility; }
+
+h1, .h1 { font-family: @font-family-serif-42; font-size: @font-size-h2; }
+h2, .h2 { font-family: @font-family-serif-24; font-size: @font-size-h3; }
+
+h3, .h3 { font-family: inherit; font-size: @font-size-base; }
+h4, .h4 { font-family: inherit; font-size: @font-size-base; }
+h5, .h5 { font-family: inherit; font-size: @font-size-base; }
+h6, .h6 { font-family: inherit; font-size: @font-size-base; }
+
+@media (min-width: @screen-md-min) {
+  h1, .h1 { font-family: @font-family-serif-64; font-size: @font-size-h1; }
+  h2, .h2 { font-family: @font-family-serif-42; font-size: @font-size-h2; }
+  h3, .h3 { font-family: @font-family-serif-24; font-size: @font-size-h3; }
+}
