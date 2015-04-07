@@ -18,11 +18,6 @@ $oembed = Utils\youtube_embed_params(get_sub_field('oembed'), array(
   'hd'              => '1'
 ));
 
-$link = array(
-  'url' => get_sub_field('link_url'),
-  'label' => get_sub_field('link_label')
-);
-
 ?>
 
 <section class="acf acf-embed">
@@ -50,11 +45,5 @@ $link = array(
 
     </div>
   </div>
-
-  <?php if (count($link) >= 2) : ?>
-  <div class="call-to-action">
-    <a class="btn btn-primary" href="<?php echo $link['url']; ?>"><?php echo $link['label']; ?></a>
-  </div>
-  <?php endif; ?>
 
 </section>
