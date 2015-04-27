@@ -2,23 +2,29 @@
 // Typography
 body { text-rendering: optimizeLegibility; }
 
-h1, .h1 { font-family: @font-family-serif-42; font-size: @font-size-h3; }
-h2, .h2 { font-family: inherit; font-size: @font-size-base; }
-h3, .h3 { font-family: inherit; font-size: @font-size-base; }
-h4, .h4 { font-family: inherit; font-size: @font-size-base; }
-h5, .h5 { font-family: inherit; font-size: @font-size-base; }
-h6, .h6 { font-family: inherit; font-size: @font-size-base; }
-
-@media (min-width: @screen-md-min) {
-  h1, .h1 { font-family: @font-family-serif-64; font-size: @font-size-h2; }
-  h2, .h2 { font-family: @font-family-serif-42; font-size: @font-size-h3; }
+// Reset headline
+h1, h2, h3, h4, h5, h6 {
+  line-height: inherit;
+  font-family: inherit;
+  font-size: @font-size-base;
 }
 
-@media (min-width: @screen-lg-min) {
-  h1, .h1 { font-family: @font-family-serif-64; font-size: @font-size-h1; }
-  h2, .h2 { font-family: @font-family-serif-42; font-size: @font-size-h2; }
-  h3, .h3 { font-family: @font-family-serif-24; font-size: @font-size-h3; }
+// Font styles
+.font-italic {
+  font-style: italic;
 }
-
-// Overlay navbar
-.wrap { margin-top: -@navbar-height; }
+.font-serif-xxlarge {
+  font-family: @font-family-serif-xxlarge;
+  font-size: @font-size-xxlarge;
+  line-height: 1.05;
+}
+.font-serif-xlarge {
+  font-family: @font-family-serif-xlarge;
+  font-size: @font-size-xlarge;
+  line-height: 1.1;
+}
+.font-serif-large {
+  font-family: @font-family-serif-large;
+  font-size: @font-size-large;
+  line-height: 1.15;
+}

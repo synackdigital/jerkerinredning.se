@@ -30,7 +30,7 @@ $text_color = get_sub_field('text_color');
       <?php if ($text) : ?>
       <div class="row" style="color:<?php echo $text_color; ?>">
         <div class="col-xs-12 col-sm-10 col-lg-8">
-          <p><?php echo $text; ?></p>
+          <p class="font-italic font-serif-xlarge"><?php echo $text; ?></p>
         </div>
       </div>
       <?php endif; ?>

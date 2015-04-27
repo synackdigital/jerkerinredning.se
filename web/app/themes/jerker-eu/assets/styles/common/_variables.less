@@ -9,10 +9,10 @@
 @brand-primary:           #27ae60;
 
 // Typography
-@font-family-sans-serif:  'Gotham Narrow A', 'Gotham Narrow B', sans-serif;
-@font-family-serif-24:    'Didot 24 A', 'Didot 24 B', serif;
-@font-family-serif-42:    'Didot 42 A', 'Didot 42 B', serif;
-@font-family-serif-64:    'Didot 64 A', 'Didot 64 B', serif;
+@font-family-sans-serif:    'Univers LT Pro 57 Condensed', sans-serif;
+@font-family-serif-large:   'Didot 24 A', 'Didot 24 B', serif;
+@font-family-serif-xlarge:  'Didot 42 A', 'Didot 42 B', serif;
+@font-family-serif-xxlarge: 'Didot 64 A', 'Didot 64 B', serif;
 
 @font-size-small:         11pt;
 @font-size-base:          15pt;
@@ -20,20 +20,11 @@
 @font-size-xlarge:        42pt; // Corresponds to fixed Didot sizes
 @font-size-xxlarge:       64pt; // Corresponds to fixed Didot sizes
 
-@font-size-h1:            @font-size-xxlarge;;
-@font-size-h2:            @font-size-xlarge;;
-@font-size-h3:            @font-size-large;
-@font-size-h4:            @font-size-base;
-@font-size-h5:            @font-size-base;
-@font-size-h6:            @font-size-base;
-
 @font-weight-normal:      300;  // Must match Typography.com font imports
 @font-weight-bold:        700;  // Must match Typography.com font imports
-
 @headings-font-weight:    @font-weight-normal;
 
-@line-height-base:        1.5;
-@headings-line-height:    1.1;
+@line-height-base:        1.45;
 
 // Grid settings
 @grid-gutter-width:         64px;
@@ -43,7 +34,7 @@
 @navbar-margin-bottom:             0;
 @navbar-border-radius:             0;
 @navbar-default-color:             @text-color;
-@navbar-default-bg:                rgba(255,255,255,.7);
+@navbar-default-bg:                @body-bg;
 @navbar-default-border:            @gray-lighter;
 @navbar-default-link-color:                @navbar-default-color;
 @navbar-default-link-hover-color:          @brand-primary;
