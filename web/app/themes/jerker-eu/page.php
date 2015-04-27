@@ -5,6 +5,12 @@ while (have_posts()) : the_post();
   if (get_field('title_visibility') !== 'hidden')
     get_template_part('templates/page', 'header');
 
+  if (have_rows('hero')) :
+    while (have_rows('hero')) : the_row();
+      get_template_part('templates/acf', get_row_layout());
+    endwhile;
+  endif;
+
   if (get_the_content())
     get_template_part('templates/content', 'page');
 
