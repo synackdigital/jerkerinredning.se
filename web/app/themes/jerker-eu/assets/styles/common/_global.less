@@ -1,6 +1,9 @@
 
 // Typography
-body { text-rendering: optimizeLegibility; }
+body {
+  text-rendering: optimizeLegibility;
+  font-weight: @font-weight-normal;
+}
 
 // Reset headline
 h1, h2, h3, h4, h5, h6 {
@@ -9,22 +12,31 @@ h1, h2, h3, h4, h5, h6 {
   font-size: @font-size-base;
 }
 
-// Font styles
-.font-italic {
-  font-style: italic;
-}
+// Didot classes
+// This font is only available in three sizes, italic, single-weight
 .font-serif-xxlarge {
   font-family: @font-family-serif-xxlarge;
   font-size: @font-size-xxlarge;
+  font-style: italic;
+  font-weight: @font-weight-normal;
   line-height: 1.05;
 }
 .font-serif-xlarge {
   font-family: @font-family-serif-xlarge;
   font-size: @font-size-xlarge;
+  font-style: italic;
+  font-weight: @font-weight-normal;
   line-height: 1.1;
 }
 .font-serif-large {
   font-family: @font-family-serif-large;
   font-size: @font-size-large;
+  font-style: italic;
+  font-weight: @font-weight-normal;
   line-height: 1.15;
+}
+
+// Main top margin for all content
+.wrap {
+  margin-top: (@line-height-computed * 2);
 }
