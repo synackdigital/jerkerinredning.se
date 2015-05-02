@@ -5,6 +5,7 @@ $repeater_count = count(get_sub_field('repeater'));
 $column_classes = array('col-xs-12');
 
 switch ($repeater_count) :
+  case 1: array_push($column_classes, 'col-sm-12', 'col-md-9', 'col-md-offset-6', 'col-lg-9', 'col-lg-offset-6'); break;
   case 2: array_push($column_classes, 'col-sm-6', 'col-md-6', 'col-lg-6'); break;
   case 3: array_push($column_classes, 'col-sm-4', 'col-md-4', 'col-lg-4'); break;
   case 4: array_push($column_classes, 'col-sm-6', 'col-md-6', 'col-lg-6', 'col-lg-3'); break;
