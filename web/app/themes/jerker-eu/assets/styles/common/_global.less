@@ -5,11 +5,18 @@ body {
   font-weight: @font-weight-normal;
 }
 
-// Reset headline
+// Reset headlines
 h1, h2, h3, h4, h5, h6 {
-  line-height: inherit;
+  line-height: 1.6;
   font-family: inherit;
   font-size: @font-size-base;
+  font-weight: @font-weight-bold;
+}
+
+// Subheads
+h1+h2, h2+h3, h3+h4, h4+h5, h5+h6 {
+  margin-top: -.5em;
+  font-size: @font-size-small;
 }
 
 // Didot classes
@@ -54,4 +61,11 @@ h1, h2, h3, h4, h5, h6 {
   @media (min-width: @screen-lg-min) {
     width: (@container-lg * .66);
   }
+}
+
+// Magic underlines
+// https://medium.com/designing-medium/crafting-link-underlines-on-medium-7c03a9274f9
+.magic-underline {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
 }
