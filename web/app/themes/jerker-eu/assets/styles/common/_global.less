@@ -77,8 +77,11 @@ h1+h2, h2+h3, h3+h4, h4+h5, h5+h6 {
 // Magic underlines
 // https://medium.com/designing-medium/crafting-link-underlines-on-medium-7c03a9274f9
 .magic-underline {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  text-decoration: none;
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.3) 50%);
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  background-position: 0 .95em;
 }
 
 // Thumbnail tweaks
