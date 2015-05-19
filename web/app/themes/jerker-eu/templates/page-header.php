@@ -7,10 +7,13 @@
       get_template_part('templates/hero', get_row_layout());
     endwhile;
   else : ?>
-  <div class="container">
-    <h1>
-      <?= Titles\title(); ?>
-    </h1>
+  <?php if ( has_post_thumbnail() ) the_post_thumbnail(); ?>
+  <div class="page-title">
+    <div class="container">
+      <h1 class="font-serif-xxlarge">
+        <?= Titles\title(); ?>
+      </h1>
+    </div>
   </div>
   <?php endif; ?>
 </div>

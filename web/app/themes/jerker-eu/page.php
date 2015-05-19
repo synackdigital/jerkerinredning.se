@@ -7,7 +7,9 @@ while (have_posts()) : the_post();
 
   do_action('get_header');
   get_template_part('templates/header');
-
+?>
+<main class="main" role="main">
+<?php
   if (get_the_content())
     get_template_part('templates/content', 'page');
 
@@ -16,5 +18,7 @@ while (have_posts()) : the_post();
       get_template_part('templates/page_section', get_row_layout());
     endwhile;
   endif;
-
+?>
+</main><!-- /.main -->
+<?php
 endwhile;

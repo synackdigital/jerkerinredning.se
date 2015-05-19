@@ -15,9 +15,7 @@ use Roots\Sage\Wrapper;
       </div>
     <![endif]-->
     <div class="wrap" role="document">
-      <main class="main" role="main">
-        <?php include Wrapper\template_path(); ?>
-      </main><!-- /.main -->
+      <?php include Wrapper\template_path(); ?>
     </div><!-- /.wrap -->
     <?php
       get_template_part('templates/footer');
