@@ -38,7 +38,8 @@
     "composer/installers": "v1.0.12",
     "vlucas/phpdotenv": "1.0.9",
     "roots/wp-stage-switcher": "1.0.3",
-    "roots/soil": "3.0.3"
+    "roots/soil": "3.0.3",
+    "wpackagist-plugin/otf-regenerate-thumbnails": "^0.3.0"
   },
   "extra": {
     "installer-paths": {
