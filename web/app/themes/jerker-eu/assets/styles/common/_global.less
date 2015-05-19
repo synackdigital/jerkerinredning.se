@@ -46,11 +46,6 @@ h1+h2, h2+h3, h3+h4, h4+h5, h5+h6 {
   line-height: 1.15;
 }
 
-// Main top margin for all content
-.wrap {
-  margin-top: (@line-height-computed * 2);
-}
-
 // Additional container classes
 .container-narrow {
   .container-fixed();
@@ -91,4 +86,9 @@ h1+h2, h2+h3, h3+h4, h4+h5, h5+h6 {
 // Thumbnail tweaks
 .thumbnail {
   margin-bottom: 0 !important; // override bootstrap
+}
+
+.page-header {
+  margin: 0;
+  padding-bottom: 0;
 }

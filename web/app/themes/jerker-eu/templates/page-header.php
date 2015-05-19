@@ -7,8 +7,10 @@
       get_template_part('templates/hero', get_row_layout());
     endwhile;
   else : ?>
-  <h1>
-    <?= Titles\title(); ?>
-  </h1>
+  <div class="container">
+    <h1>
+      <?= Titles\title(); ?>
+    </h1>
+  </div>
   <?php endif; ?>
 </div>
