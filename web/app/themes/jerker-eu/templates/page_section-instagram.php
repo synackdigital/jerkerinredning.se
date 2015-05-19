@@ -11,6 +11,6 @@ $instafeed_data = [
 
 <section class="page-section page-section-instagram">
   <div class="container">
-    <div class="instafeed-canvas" data-instafeed="<?= htmlentities(json_encode($instafeed_data), ENT_QUOTES); ?>"></div>
+    <div class="row row-nogutters instafeed-canvas instafeed-canvas-<?= $instafeed_data['resolution'] ?>" data-instafeed="<?= htmlentities(json_encode($instafeed_data), ENT_QUOTES); ?>"></div>
   </div>
 </section>
