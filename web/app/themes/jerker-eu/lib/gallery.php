@@ -99,7 +99,7 @@ function gallery($attr) {
         $image = wp_get_attachment_link($id, $size, true, false);
         break;
     }
-    $output .= ($i % $columns == 0) ? '<div class="row gallery-row">': '';
+    $output .= ($i % $columns == 0) ? '<div class="row row-nogutters gallery-row">': '';
     $output .= '<div class="' . $grid .'">' . $image;
 
     if (trim($attachment->post_excerpt)) {
