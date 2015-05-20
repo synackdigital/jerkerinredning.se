@@ -8,9 +8,9 @@ $teasers_count = count( $teasers );
 $column_classes = array('col-xs-12');
 switch ($teasers_count) :
   case 1 : array_push($column_classes, 'col-sm-8 col-sm-offset-2', 'col-md-6', 'col-md-offset-3', 'col-lg-4', 'col-lg-offset-4'); break;
-  case 2 : array_push($column_classes, 'col-sm-6', 'col-md-6', 'col-lg-6'); break;
-  case 3 : array_push($column_classes, 'col-sm-4', 'col-md-4', 'col-lg-4'); break;
-  case 4 : array_push($column_classes, 'col-sm-6', 'col-md-6', 'col-lg-6', 'col-lg-3'); break;
+  case 2 : array_push($column_classes, 'col-sm-6'); break;
+  case 3 : array_push($column_classes, 'col-sm-4'); break;
+  case 4 : array_push($column_classes, 'col-sm-6', 'col-lg-3'); break;
 endswitch;
 
 // Loop teasers

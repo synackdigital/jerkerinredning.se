@@ -11,7 +11,7 @@
   <div class="page-title">
     <div class="container">
       <h1 class="font-serif-xxlarge">
-        <?= Titles\title(); ?>
+        <span class="magic-underline"><?= Titles\title(); ?></span>
       </h1>
     </div>
   </div>
