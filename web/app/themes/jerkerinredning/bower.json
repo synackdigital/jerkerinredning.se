@@ -1,8 +1,7 @@
 {
-  "name": "sage",
-  "homepage": "https://roots.io/sage/",
+  "name": "jerkerinredning",
   "authors": [
-    "Ben Word <ben@benword.com>"
+    "Fredrik Broman <frebro@gmail.com>"
   ],
   "license": "MIT",
   "private": true,
