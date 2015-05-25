@@ -6,7 +6,7 @@ if ( has_post_thumbnail() ) :
   $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
   $background_image = $thumbnail['0'];
 else :
-  $background_image = 'bar';
+  $background_image = '';
 endif;
 
 ?>
@@ -19,11 +19,15 @@ endif;
     endwhile;
   else : ?>
   <div class="page-title">
-    <div class="container">
-      <h1 class="font-serif-xxlarge">
-        <span class="magic-underline"><?= Titles\title(); ?></span>
-      </h1>
-    </div>
+    <h1>
+      <?php
+      if ( get_field('display_title') ) :
+        the_field('display_title');
+      else :
+        Titles\title();
+      endif;
+      ?>
+    </h1>
   </div>
   <?php endif; ?>
 </div>

@@ -19,11 +19,9 @@ if ( !empty( $iframe_html ) ) :
   ));
 endif;
 
-$content_html = get_sub_field('text');
-
 ?>
 
 <section class="hero hero-oembed">
   <div class="hero-oembed-container"><?= $iframe_html; ?></div>
-  <div class="hero-oembed-overlay"><?= $content_html; ?></div>
+  <div class="hero-oembed-overlay"></div>
 </section>
