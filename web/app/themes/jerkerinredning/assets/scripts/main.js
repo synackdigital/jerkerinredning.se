@@ -21,12 +21,14 @@
   var Sage = {
     // All pages
     'common': {
-      init: function() {
-        // JavaScript to be fired on all pages
-        initializeInstafeed();
+      init: function() { // JavaScript to be fired on all pages
+
+        // Find and initialize Instafeed canvases
+        $('.instafeed-canvas').each(function(i) {
+          initializeInstafeed($(this));
+        });
       },
-      finalize: function() {
-        // JavaScript to be fired on all pages, after page specific JS is fired
+      finalize: function() { // JavaScript to be fired on all pages, after page specific JS is fired
       }
     },
     // Home page
