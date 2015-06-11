@@ -33,17 +33,14 @@
     },
     // Home page
     'home': {
-      init: function() {
-        // JavaScript to be fired on the home page
+      init: function() { // JavaScript to be fired on the home page
       },
-      finalize: function() {
-        // JavaScript to be fired on the home page, after the init JS
+      finalize: function() { // JavaScript to be fired on the home page, after the init JS
       }
     },
     // About us page, note the change from about-us to about_us.
-    'about_us': {
-      init: function() {
-        // JavaScript to be fired on the about us page
+    'bord': {
+      init: function() { // JavaScript to be fired on the 'bord' page
       }
     }
   };

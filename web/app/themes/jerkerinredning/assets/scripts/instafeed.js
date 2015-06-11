@@ -1,12 +1,11 @@
-
-function initializeInstafeed($instafeed) {
+function initializeInstafeed($canvas) {
 
   // Assign a unique ID for this container
   uniqid = Date.now();
-  $instafeed.attr('id', 'instafeed-canvas-'+uniqid);
+  $canvas.attr('id', 'instafeed-canvas-'+uniqid);
 
   // Retrieve data from the data-instafeed attribute
-  $instafeed_data = $instafeed.data('instafeed');
+  $canvas_data = $canvas.data('instafeed');
 
   // Create the Instafeed
   var instafeed = new Instafeed({
@@ -17,11 +16,11 @@ function initializeInstafeed($instafeed) {
     accessToken: PHPVAR.instagram_access_token,
 
     // Create attribues
-    target: $instafeed.attr('id'),
-    get: $instafeed_data.get,
-    limit: parseInt($instafeed_data.limit),
-    resolution: $instafeed_data.resolution,
-    links: $instafeed_data.links,
+    target: $canvas.attr('id'),
+    get: $canvas_data.get,
+    limit: parseInt($canvas_data.limit),
+    resolution: $canvas_data.resolution,
+    links: $canvas_data.links,
 
     // HTML Template
     template: '<div class="col-xs-12 col-sm-4 col-lg-3"><div class="thumbnail"><a href="{{link}}"><img src="{{image}}" alt="{{caption}}"></a></div></div>',

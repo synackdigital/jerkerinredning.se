@@ -3,7 +3,8 @@
     "main.js": {
       "files": [
         "scripts/main.js",
-        "scripts/instafeed.js"
+        "scripts/instafeed.js",
+        "scripts/tableflip.js"
       ],
       "main": true
     },
