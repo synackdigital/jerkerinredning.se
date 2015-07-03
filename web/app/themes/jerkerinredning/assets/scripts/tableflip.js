@@ -12,12 +12,11 @@
   'use strict';
 
   /**
-   * Plugin NAMESPACE and SELECTOR
+   * Plugin NAMESPACE
    * @type {String}
    * @api private
    */
-  var NAMESPACE = 'tableflip',
-  SELECTOR = '[data-' + NAMESPACE + ']';
+  var NAMESPACE = 'tableflip';
 
   /**
    * Plugin constructor
@@ -27,12 +26,20 @@
    */
   function Plugin (element, options) {
     this.options = $.extend(true, $.fn[NAMESPACE].defaults, options);
-    this.required = [
-      this.options.models,
-      this.options.materials,
-      this.options.finishes
-    ];
     this.$element = $(element);
+
+    this.$modelsContainer = $('[data-tableflip-models]', this.$element);
+    this.$modelsNextBtn = $('[data-tableflip-control="next"]', this.$modelsContainer);
+    this.$modelsPrevBtn = $('[data-tableflip-control="prev"]', this.$modelsContainer);
+    this.$modelsLabel = $('[data-tableflip-control="label"]', this.$modelsContainer);
+
+    // Fetch models from data-attribute
+    $.each($('[data-tableflip-model]', this.$modelsContainer), $.proxy(function(index, el) {
+      var model = $(el).data('tableflip-model');
+      this.options.models.push(model);
+    }, this));
+
+    this.options.order.model = this.options.models[0];
   }
 
   /**
@@ -50,12 +57,31 @@
      */
     init: function () {
       console.log('(╯°□°）╯︵ ┻━┻');
-      console.log(this.options);
 
-      // Continue if required options are not null
-      if ( this.required.length === $.grep(this.required, function(option) { return null!==option; }).length ) {
-        console.log('not null');
+      this.$modelsNextBtn.on('click', $.proxy(function(event) {
+        event.preventDefault();
+        this.setModel('next');
+      }, this));
+
+      this.$modelsPrevBtn.on('click', $.proxy(function(event) {
+        event.preventDefault();
+        this.setModel('prev');
+      }, this));
+    },
+
+    setModel: function(keyword) {
+      switch (keyword) {
+        case 'next':
+          console.log('next');
+          break;
+        case 'prev':
+          console.log('prev');
+          break;
       }
+    },
+
+    getModel: function() {
+      return this.options.order.model;
     }
 
   };
@@ -70,10 +96,10 @@
   $.fn[NAMESPACE] = function (method, options) {
     return this.each(function () {
       var $this = $(this),
-      data = $this.data('fn.' + NAMESPACE);
+      data = $this.data(NAMESPACE);
       options = (typeof method === 'object') ? method : options;
       if (!data) {
-        $this.data('fn.' + NAMESPACE, (data = new Plugin(this, options)));
+        $this.data(NAMESPACE, (data = new Plugin(this, options)));
       }
       data[(typeof method === 'string') ? method : 'init']();
     });
@@ -85,10 +111,15 @@
    * @api public
    */
   $.fn[NAMESPACE].defaults = {
-    models: null,
-    materials: null,
-    finishes: null,
-    configuration: null
+    models: [],
+    materials: [],
+    finishes: [],
+    order: {
+      model: null,
+      material: null,
+      finish: null,
+      price: 0
+    }
   };
 
   /**
@@ -97,9 +128,7 @@
    */
   $(window).on('load', function (event) {
     $('[data-' + NAMESPACE + ']').each(function () {
-      var $this = $(this);
-      var data = $this.data(NAMESPACE);
-      $this[NAMESPACE](data);
+      $(this)[NAMESPACE]();
     });
   });
 
