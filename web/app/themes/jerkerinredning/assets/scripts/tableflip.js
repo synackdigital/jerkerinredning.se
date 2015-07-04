@@ -28,18 +28,27 @@
     this.options = $.extend(true, $.fn[NAMESPACE].defaults, options);
     this.$element = $(element);
 
-    this.$modelsContainer = $('[data-tableflip-models]', this.$element);
-    this.$modelsNextBtn = $('[data-tableflip-control="next"]', this.$modelsContainer);
-    this.$modelsPrevBtn = $('[data-tableflip-control="prev"]', this.$modelsContainer);
-    this.$modelsLabel = $('[data-tableflip-control="label"]', this.$modelsContainer);
+    this.$modelsContainer = $('.tableflip__models', this.$element);
+    this.$modelsNextControl = $('.tableflip__control--next', this.$modelsContainer);
+    this.$modelsPrevControl = $('.tableflip__control--prev', this.$modelsContainer);
+    this.$modelLabel = $('.tableflip__label--model', this.$modelsContainer);
+
+    this.$priceLabel = $('.tableflip__label--price', this.$element);
+
+    this.$slidesContainer = $('.tableflip__slides', this.$element);
 
     // Fetch models from data-attribute
-    $.each($('[data-tableflip-model]', this.$modelsContainer), $.proxy(function(index, el) {
+    $.each($('.tableflip__model', this.$modelsContainer), $.proxy(function(index, el) {
       var model = $(el).data('tableflip-model');
+      model.base_price = parseInt(model.base_price, 10);
+      model.max_length = parseInt(model.max_length, 10);
+      model.max_width = parseInt(model.max_width, 10);
+      model.min_length = parseInt(model.min_length, 10);
+      model.min_width = parseInt(model.min_width, 10);
+      model.sqm_price = parseInt(model.sqm_price, 10);
+      model.$element = el;
       this.options.models.push(model);
     }, this));
-
-    this.options.order.model = this.options.models[0];
   }
 
   /**
@@ -58,30 +67,84 @@
     init: function () {
       console.log('(╯°□°）╯︵ ┻━┻');
 
-      this.$modelsNextBtn.on('click', $.proxy(function(event) {
+      // Setup order
+      this.setModel(0);
+
+      // Setup controls
+      this.$modelsNextControl.on('click', $.proxy(function(event) {
         event.preventDefault();
         this.setModel('next');
       }, this));
-
-      this.$modelsPrevBtn.on('click', $.proxy(function(event) {
+      this.$modelsPrevControl.on('click', $.proxy(function(event) {
         event.preventDefault();
         this.setModel('prev');
       }, this));
     },
 
-    setModel: function(keyword) {
-      switch (keyword) {
-        case 'next':
-          console.log('next');
-          break;
-        case 'prev':
-          console.log('prev');
-          break;
+    /**
+     * setModel method
+     * @api public
+     */
+    setModel: function(index) {
+
+      // If index is a string, evaluate as keyword
+      if ( typeof index === "string" ) {
+        var keyword = index;
+        index = this.options.models.indexOf(this.options.order.model);
+
+        switch (keyword) {
+          case 'next':
+            if ( index >= this.options.models.length - 1 ) { index = 0; }
+            else { index += 1; }
+            break;
+          case 'prev':
+            if ( index <= 0 ) { index = this.options.models.length - 1; }
+            else { index -= 1; }
+            break;
+        }
       }
+
+      this.options.order.model = this.options.models[index];
+      this.refreshUI();
     },
 
+    /**
+     * getModel method
+     * @api public
+     */
     getModel: function() {
       return this.options.order.model;
+    },
+
+    /**
+     * getPrice method
+     * @api public
+     */
+    getPrice: function() {
+      var model = this.options.order.model;
+      return model.base_price + (model.sqm_price * this.getSqm());
+    },
+
+    /**
+     * getSqm method
+     * @api public
+     */
+    getSqm: function() {
+      var model = this.options.order.model;
+      return model.min_length * model.min_width / 1000000; // convert mm to m
+    },
+
+    /**
+     * refreshUI method
+     * @api public
+     */
+    refreshUI: function() {
+      console.log(this.getModel());
+      this.$modelLabel.html(this.options.order.model.name);
+      this.$priceLabel.html(this.getPrice());
+
+      var position = $(this.options.order.model.$element).position();
+      this.$slidesContainer.css('left', (position.left * -1));
     }
 
   };
@@ -127,7 +190,7 @@
    * @api public
    */
   $(window).on('load', function (event) {
-    $('[data-' + NAMESPACE + ']').each(function () {
+    $('.' + NAMESPACE).each(function () {
       $(this)[NAMESPACE]();
     });
   });

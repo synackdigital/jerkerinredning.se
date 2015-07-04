@@ -7,20 +7,24 @@
 ?>
 
 <section class="page-section page-section_tableflip">
-  <div class="tableflip" data-tableflip>
-    <div class="tableflip__models" data-tableflip-models>
+  <div class="tableflip">
+    <div class="tableflip__models">
       <div class="tableflip__controls">
-        <span data-tableflip-control="prev">&lsaquo;</span>
-        <span data-tableflip-control="label"></span>
-        <span data-tableflip-control="next">&rsaquo;</span>
+        <span class="tableflip__control tableflip__control--prev">&lsaquo;</span>
+        <span class="tableflip__label tableflip__label--model"></span>
+        <span class="tableflip__control tableflip__control--next">&rsaquo;</span>
       </div>
       <div class="tableflip__slides" style="width:<?php echo (100 * count($models)).'%'; ?>;">
         <?php foreach ( $models as $key => $model ) : ?>
         <?php unset($models[$key]['image']); $json_model = $models[$key]; ?>
-        <div class="tableflip__slide" data-tableflip-model="<?php echo htmlspecialchars(json_encode($json_model)); ?>" style="width:<?php echo (100 / count($models)).'%'; ?>;">
+        <div class="tableflip__model tableflip__slide" data-tableflip-model="<?php echo htmlspecialchars(json_encode($json_model)); ?>" style="width:<?php echo (100 / count($models)).'%'; ?>;">
           <?php echo sprintf('<img src="%s" alt="%s" width="%d" height="%d">', $model['image']['url'], $model['name'], $model['image']['width'], $model['image']['height']); ?>
         </div>
         <?php endforeach; ?>
+      </div>
+      <div class="tableflip__order">
+        <span class="tableflip__label tableflip__label--price"></span>
+        <span class="tableflip__label tableflip__label--currency">SEK</span>
       </div>
     </div>
     <pre>

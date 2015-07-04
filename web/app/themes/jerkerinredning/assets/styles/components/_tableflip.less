@@ -10,6 +10,18 @@
 // Models container
 .tableflip__models {}
 
+.tableflip__models .tableflip__controls {
+  &:extend(.font-serif-xxlarge);
+  text-align: center;
+  * {
+    display: inline-block;
+  }
+}
+
+.tableflip__label--model {
+  min-width: 6em;
+}
+
 // Materials container
 .tableflip__materials { }
 
@@ -19,34 +31,24 @@
 // Order container
 .tableflip__order { }
 
-
-// Tableflip slider
-// ##
-
-// Slider controls
-.tableflip__controls {
-  background-color: rgba(0,200,100,.1);
-  &:extend(.font-serif-xxlarge);
-  text-align: center;
-  * {
-    display: inline-block;
-  }
-
-  [data-tableflip-control="next"],
-  [data-tableflip-control="prev"] {
-    cursor: pointer;
-  }
+// Controls
+.tableflip__control {
+  cursor: pointer;
 }
+
+
+// Slides
+// ##
 
 // Slider slides
 .tableflip__slides {
   position: relative;
+  left: 0;
   transition: .6s ease-in-out;
 }
 
 // Slider single slide
 .tableflip__slide {
-  border: 1px solid rgba(0,100,200,.1);
   float: left;
   * {
     display: block;
