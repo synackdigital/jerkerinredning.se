@@ -29,13 +29,14 @@
     this.$element = $(element);
 
     this.$modelsContainer = $('.tableflip__models', this.$element);
+    this.$modelsSlides = $('.tableflip__slides', this.$modelsContainer);
     this.$modelsNextControl = $('.tableflip__control--next', this.$modelsContainer);
     this.$modelsPrevControl = $('.tableflip__control--prev', this.$modelsContainer);
     this.$modelLabel = $('.tableflip__label--model', this.$modelsContainer);
 
-    this.$priceLabel = $('.tableflip__label--price', this.$element);
+    this.$materialsContainer = $('.tableflip__materials', this.$element);
 
-    this.$slidesContainer = $('.tableflip__slides', this.$element);
+    this.$priceLabel = $('.tableflip__label--price', this.$element);
 
     // Fetch models from data-attribute
     $.each($('.tableflip__model', this.$modelsContainer), $.proxy(function(index, el) {
@@ -48,6 +49,14 @@
       model.sqm_price = parseInt(model.sqm_price, 10);
       model.$element = el;
       this.options.models.push(model);
+    }, this));
+
+    // Fetch models from data-attribute
+    $.each($('.tableflip__material', this.$materialsContainer), $.proxy(function(index, el) {
+      var material = $(el).data('tableflip-material');
+      material.price_modifier = parseFloat(material.price_modifier, 10);
+      material.$element = el;
+      this.options.materials.push(material);
     }, this));
   }
 
@@ -69,15 +78,22 @@
 
       // Setup order
       this.setModel(0);
+      this.setMaterial(0, true);
+
+      console.log(this.options.models);
+      console.log(this.options.materials);
 
       // Setup controls
       this.$modelsNextControl.on('click', $.proxy(function(event) {
         event.preventDefault();
-        this.setModel('next');
+        this.setModel('next', true);
       }, this));
       this.$modelsPrevControl.on('click', $.proxy(function(event) {
         event.preventDefault();
-        this.setModel('prev');
+        this.setModel('prev', true);
+      }, this));
+      $('.tableflip__material', this.$materialsContainer).on('click', $.proxy(function(event){
+        this.setMaterial($('.tableflip__material', this.$materialsContainer).index(event.currentTarget), true);
       }, this));
     },
 
@@ -85,7 +101,7 @@
      * setModel method
      * @api public
      */
-    setModel: function(index) {
+    setModel: function(index, refresh) {
 
       // If index is a string, evaluate as keyword
       if ( typeof index === "string" ) {
@@ -105,7 +121,10 @@
       }
 
       this.options.order.model = this.options.models[index];
-      this.refreshUI();
+
+      if (refresh) {
+        this.refreshUI();
+      }
     },
 
     /**
@@ -117,12 +136,33 @@
     },
 
     /**
+     * setMaterial method
+     * @api public
+     */
+    setMaterial: function(index, refresh) {
+      this.options.order.material = this.options.materials[index];
+
+      if (refresh) {
+        this.refreshUI();
+      }
+    },
+
+    /**
+     * getMaterial method
+     * @api public
+     */
+    getMaterial: function() {
+      return this.options.order.material;
+    },
+
+    /**
      * getPrice method
      * @api public
      */
     getPrice: function() {
       var model = this.options.order.model;
-      return model.base_price + (model.sqm_price * this.getSqm());
+      var material = this.options.order.material;
+      return (model.base_price + (model.sqm_price * this.getSqm())) * material.price_modifier;
     },
 
     /**
@@ -140,11 +180,21 @@
      */
     refreshUI: function() {
       console.log(this.getModel());
+      console.log(this.getMaterial());
+
+      this.$modelsSlides.css('height', $(this.options.order.model.$element).outerHeight());
+
+      // Update labels
       this.$modelLabel.html(this.options.order.model.name);
       this.$priceLabel.html(this.getPrice());
 
+      // Set selected class
+      $('.tableflip__material', this.$materialsContainer).removeClass('selected');
+      $(this.options.order.material.$element).addClass('selected');
+
+      // Slide model image into view
       var position = $(this.options.order.model.$element).position();
-      this.$slidesContainer.css('left', (position.left * -1));
+      this.$modelsSlides.css('left', (position.left * -1));
     }
 
   };

@@ -22,10 +22,19 @@
         </div>
         <?php endforeach; ?>
       </div>
-      <div class="tableflip__order">
-        <span class="tableflip__label tableflip__label--price"></span>
-        <span class="tableflip__label tableflip__label--currency">SEK</span>
+    </div>
+    <div class="tableflip__materials">
+      <?php foreach ( $materials as $key => $material ) : ?>
+      <div class="tableflip__material tableflip__control" data-tableflip-material="<?php echo htmlspecialchars(json_encode($material)); ?>">
+        <?php echo sprintf('<img src="%s" alt="%s" width="%d" height="%d">', $material['image']['url'], $material['name'], $material['image']['width'], $material['image']['height']); ?>
+        <?php echo $material['name']; ?>
       </div>
+      <?php endforeach; ?>
+    </div>
+    <div class="tableflip__order font-serif-xlarge">
+      <span class="tableflip__label">Totalt:</span>
+      <span class="tableflip__label tableflip__label--price"></span>
+      <span class="tableflip__label">SEK</span>
     </div>
     <pre>
       <?php print_r($models); ?>

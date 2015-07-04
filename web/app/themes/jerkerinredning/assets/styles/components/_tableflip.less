@@ -3,6 +3,7 @@
 
 // Tableflip container
 .tableflip {
+  text-align: center;
   width: 100%;
   overflow: hidden;
 }
@@ -12,7 +13,6 @@
 
 .tableflip__models .tableflip__controls {
   &:extend(.font-serif-xxlarge);
-  text-align: center;
   * {
     display: inline-block;
   }
@@ -23,13 +23,46 @@
 }
 
 // Materials container
-.tableflip__materials { }
+.tableflip__materials {
+  padding-top: @line-height-computed;
+  padding-bottom: @line-height-computed;
+}
+
+.tableflip__material {
+  display: inline-block;
+  font-size: @font-size-small;
+  width: 70px;
+
+  img {
+    border: 2px solid transparent;
+    display: block;
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+  }
+
+  &.selected img {
+    border-color: @body-bg;
+    box-shadow: 0 0 5px 2px @text-color;
+  }
+}
 
 // Finishes container
 .tableflip__finishes { }
 
+// Dimensions container
+.tableflip__dimensions { }
+
 // Order container
-.tableflip__order { }
+.tableflip__order {
+  margin-top: @line-height-computed;
+  margin-bottom: @line-height-computed;
+}
+
+.tableflip__order__price {
+  &:extend(.magic-underline);
+}
 
 // Controls
 .tableflip__control {
