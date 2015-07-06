@@ -49,7 +49,26 @@
 }
 
 // Finishes container
-.tableflip__finishes { }
+.tableflip__finishes {
+  margin-top: @line-height-computed;
+  margin-bottom: @line-height-computed;
+}
+
+.tableflip__finish {
+  background-color: @gray-lighter;
+  border-radius: @border-radius-large;
+
+  font-size: @font-size-small;
+
+  display: inline-block;
+  padding: @padding-base-vertical @padding-base-horizontal;
+  margin: @padding-small-vertical @padding-small-horizontal;
+
+  &.selected {
+    background-color: @brand-primary;
+    color: white;
+  }
+}
 
 // Dimensions container
 .tableflip__dimensions { }

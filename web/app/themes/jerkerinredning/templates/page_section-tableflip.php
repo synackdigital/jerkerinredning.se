@@ -35,6 +35,14 @@
       <?php endforeach; ?>
     </div>
 
+    <div class="tableflip__finishes">
+      <?php foreach ( $finishes as $key => $finish ) : ?>
+      <div class="tableflip__finish tableflip__control" data-tableflip-finish="<?php echo htmlspecialchars(json_encode($finish)); ?>">
+        <?php echo $finish['name']; ?>
+      </div>
+      <?php endforeach; ?>
+    </div>
+
     <div class="tableflip__dimensions">
       <div class="range-slider">
         <span class="font-serif-large">Bredd</span>

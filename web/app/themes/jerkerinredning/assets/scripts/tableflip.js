@@ -40,6 +40,7 @@
     this.$lengthLabel = $('.tableflip__label--length', this.$element);
 
     this.$materialsContainer = $('.tableflip__materials', this.$element);
+    this.$finishesContainer = $('.tableflip__finishes', this.$element);
 
     this.$priceLabel = $('.tableflip__label--price', this.$element);
 
@@ -63,6 +64,14 @@
       material.$element = el;
       this.options.materials.push(material);
     }, this));
+
+    // Fetch finishes from data-attribute
+    $.each($('.tableflip__finish', this.$finishesContainer), $.proxy(function(index, el) {
+      var finish = $(el).data('tableflip-finish');
+      finish.price_modifier = parseFloat(finish.price_modifier, 10);
+      finish.$element = el;
+      this.options.finishes.push(finish);
+    }, this));
   }
 
   /**
@@ -85,7 +94,8 @@
       this.setModel(0);
       this.setWidth(1100);
       this.setLength(2200);
-      this.setMaterial(0, true);
+      this.setMaterial(0);
+      this.setFinish(0, true);
 
       // Setup controls
       this.$modelsNextControl.on('click', $.proxy(function(event) {
@@ -110,6 +120,10 @@
 
       $('.tableflip__material', this.$materialsContainer).on('click', $.proxy(function(event){
         this.setMaterial($('.tableflip__material', this.$materialsContainer).index(event.currentTarget), true);
+      }, this));
+
+      $('.tableflip__finish', this.$finishesContainer).on('click', $.proxy(function(event){
+        this.setFinish($('.tableflip__finish', this.$finishesContainer).index(event.currentTarget), true);
       }, this));
     },
 
@@ -182,6 +196,29 @@
     },
 
     /**
+     * setFinish method
+     * @param {Integer} [index]
+     * @param {Boolean} [refresh]
+     * @api public
+     */
+    setFinish: function(index, refresh) {
+      this.options.order.finish = this.options.finishes[index];
+
+      if (refresh) {
+        this.refresh();
+      }
+    },
+
+    /**
+     * getFinish method
+     * @return {Object}
+     * @api public
+     */
+    getFinish: function() {
+      return this.options.order.finish;
+    },
+
+    /**
      * setWidth method
      * @param {Integer} [width]
      * @param {Boolean} [refresh]
@@ -239,9 +276,10 @@
     setPrice: function(refresh) {
       var model = this.options.order.model;
       var material = this.options.order.material;
+      var finish = this.options.order.finish;
 
       // Ceil price to nearest 100
-      this.options.order.price = Math.ceil(Math.ceil((model.base_price + (model.sqm_price * this.getSqm())) * material.price_modifier)/100) * 100;
+      this.options.order.price = Math.ceil(Math.ceil((model.base_price + (model.sqm_price * this.getSqm())) * material.price_modifier * finish.price_modifier)/100) * 100;
 
       if (refresh) {
         this.refresh();
@@ -301,7 +339,9 @@
 
       // Set "selected" class
       $('.tableflip__material', this.$materialsContainer).removeClass('selected');
+      $('.tableflip__finish', this.$finishesContainer).removeClass('selected');
       $(this.options.order.material.$element).addClass('selected');
+      $(this.options.order.finish.$element).addClass('selected');
 
       // Update controls
       this.$widthControl.attr('min', this.options.order.model.min_width).attr('max', this.options.order.model.max_width).attr('value', this.options.order.width);
