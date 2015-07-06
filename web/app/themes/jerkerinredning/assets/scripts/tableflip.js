@@ -56,7 +56,7 @@
       this.options.models.push(model);
     }, this));
 
-    // Fetch models from data-attribute
+    // Fetch materials from data-attribute
     $.each($('.tableflip__material', this.$materialsContainer), $.proxy(function(index, el) {
       var material = $(el).data('tableflip-material');
       material.price_modifier = parseFloat(material.price_modifier, 10);
@@ -115,6 +115,8 @@
 
     /**
      * setModel method
+     * @param {Integer/string} [index]
+     * @param {Boolean} [refresh]
      * @api public
      */
     setModel: function(index, refresh) {
@@ -149,6 +151,7 @@
 
     /**
      * getModel method
+     * @return {Object}
      * @api public
      */
     getModel: function() {
@@ -157,6 +160,8 @@
 
     /**
      * setMaterial method
+     * @param {Integer} [index]
+     * @param {Boolean} [refresh]
      * @api public
      */
     setMaterial: function(index, refresh) {
@@ -169,6 +174,7 @@
 
     /**
      * getMaterial method
+     * @return {Object}
      * @api public
      */
     getMaterial: function() {
@@ -177,6 +183,8 @@
 
     /**
      * setWidth method
+     * @param {Integer} [width]
+     * @param {Boolean} [refresh]
      * @api public
      */
     setWidth: function(width, refresh) {
@@ -191,6 +199,7 @@
 
     /**
      * getWidth method
+     * @return {Object}
      * @api public
      */
     getWidth: function() {
@@ -199,6 +208,8 @@
 
     /**
      * setLength method
+     * @param {Integer} [length]
+     * @param {Boolean} [refresh]
      * @api public
      */
     setLength: function(length, refresh) {
@@ -213,6 +224,7 @@
 
     /**
      * getLength method
+     * @return {Integer}
      * @api public
      */
     getLength: function() {
@@ -221,32 +233,57 @@
 
     /**
      * setPrice method
+     * @param {Boolean} [refresh]
      * @api public
      */
-    setPrice: function() {
+    setPrice: function(refresh) {
       var model = this.options.order.model;
       var material = this.options.order.material;
 
-      this.options.order.price = Math.ceil(Math.floor((model.base_price + (model.sqm_price * this.getSqm())) * material.price_modifier)/100) * 100;
+      // Ceil price to nearest 100
+      this.options.order.price = Math.ceil(Math.ceil((model.base_price + (model.sqm_price * this.getSqm())) * material.price_modifier)/100) * 100;
+
+      if (refresh) {
+        this.refresh();
+      }
     },
 
     /**
      * getPrice method
+     * @return {Integer}
      * @api public
      */
     getPrice: function() {
-      // Re-calculate price before return
       this.setPrice();
-
       return this.options.order.price;
     },
 
     /**
+     * getPriceString method
+     * @return {String}
+     * @api public
+     */
+    getPriceString: function() {
+
+      // Insert space every third character from the last
+      var priceArray = this.getPrice().toString().split('').reverse();
+      $.each(priceArray, function(i, str) {
+        if (i !== 0 && i % 3 === 0) {
+          priceArray[i] = str + '&thinsp;';
+        }
+      });
+
+      // Return price and currency as a string
+      return priceArray.reverse().join('') + '&thinsp;<abbr>' + this.options.order.currency + '</abbr>';
+    },
+
+    /**
      * getSqm method
+     * @return {Integer}
      * @api public
      */
     getSqm: function() {
-      return this.getLength() * this.getWidth() / 1000000; // convert mm to m
+      return this.getLength() * this.getWidth() / 1000000;
     },
 
     /**
@@ -254,15 +291,6 @@
      * @api public
      */
     refresh: function() {
-
-      // Format price into a nice string
-      var formattedPrice = this.getPrice().toString().split('').reverse();
-      $.each(formattedPrice, function(i, str) {
-        if (i !== 0 && i % 3 === 0) {
-          formattedPrice[i] = str + '&thinsp;';
-        }
-      });
-      formattedPrice = formattedPrice.reverse().join('');
 
       // Slide model image into view
       var position = $(this.options.order.model.$element).position();
@@ -283,7 +311,7 @@
       this.$modelLabel.html(this.options.order.model.name);
       this.$widthLabel.html((this.options.order.width / 10) + " cm");
       this.$lengthLabel.html((this.options.order.length / 10) + " cm");
-      this.$priceLabel.html("Beställ nu för " + formattedPrice + " SEK");
+      this.$priceLabel.html("Beställ nu för " + this.getPriceString());
 
       console.log(JSON.stringify(this.options.order));
     }
@@ -324,7 +352,8 @@
       finish: null,
       width: 0,
       length: 0,
-      price: 0
+      price: 0,
+      currency: 'SEK'
     }
   };
 
