@@ -34,6 +34,11 @@
     this.$modelsPrevControl = $('.tableflip__control--prev', this.$modelsContainer);
     this.$modelLabel = $('.tableflip__label--model', this.$modelsContainer);
 
+    this.$widthControl = $('.tableflip__control--width', this.$element);
+    this.$widthLabel = $('.tableflip__label--width', this.$element);
+    this.$lengthControl = $('.tableflip__control--length', this.$element);
+    this.$lengthLabel = $('.tableflip__label--length', this.$element);
+
     this.$materialsContainer = $('.tableflip__materials', this.$element);
 
     this.$priceLabel = $('.tableflip__label--price', this.$element);
@@ -78,20 +83,31 @@
 
       // Setup order
       this.setModel(0);
+      this.setWidth(1100);
+      this.setLength(2200);
       this.setMaterial(0, true);
-
-      console.log(this.options.models);
-      console.log(this.options.materials);
 
       // Setup controls
       this.$modelsNextControl.on('click', $.proxy(function(event) {
         event.preventDefault();
         this.setModel('next', true);
       }, this));
+
       this.$modelsPrevControl.on('click', $.proxy(function(event) {
         event.preventDefault();
         this.setModel('prev', true);
       }, this));
+
+      this.$widthControl.on('input', $.proxy(function(event) {
+        event.preventDefault();
+        this.setWidth(event.currentTarget.value, true);
+      }, this));
+
+      this.$lengthControl.on('input', $.proxy(function(event) {
+        event.preventDefault();
+        this.setLength(event.currentTarget.value, true);
+      }, this));
+
       $('.tableflip__material', this.$materialsContainer).on('click', $.proxy(function(event){
         this.setMaterial($('.tableflip__material', this.$materialsContainer).index(event.currentTarget), true);
       }, this));
@@ -122,8 +138,12 @@
 
       this.options.order.model = this.options.models[index];
 
+      // Update dimensions to fit the new model's max/min
+      this.setWidth(this.options.order.width);
+      this.setLength(this.options.order.length);
+
       if (refresh) {
-        this.refreshUI();
+        this.refresh();
       }
     },
 
@@ -143,7 +163,7 @@
       this.options.order.material = this.options.materials[index];
 
       if (refresh) {
-        this.refreshUI();
+        this.refresh();
       }
     },
 
@@ -156,13 +176,57 @@
     },
 
     /**
+     * setWidth method
+     * @api public
+     */
+    setWidth: function(width, refresh) {
+      width = (width > this.options.order.model.max_width) ? this.options.order.model.max_width : width;
+      width = (width < this.options.order.model.min_width) ? this.options.order.model.min_width : width;
+      this.options.order.width = width;
+
+      if (refresh) {
+        this.refresh();
+      }
+    },
+
+    /**
+     * getWidth method
+     * @api public
+     */
+    getWidth: function() {
+      return this.options.order.width;
+    },
+
+    /**
+     * setLength method
+     * @api public
+     */
+    setLength: function(length, refresh) {
+      length = (length > this.options.order.model.max_length) ? this.options.order.model.max_length : length;
+      length = (length < this.options.order.model.min_length) ? this.options.order.model.min_length : length;
+      this.options.order.length = length;
+
+      if (refresh) {
+        this.refresh();
+      }
+    },
+
+    /**
+     * getLength method
+     * @api public
+     */
+    getLength: function() {
+      return this.options.order.length;
+    },
+
+    /**
      * getPrice method
      * @api public
      */
     getPrice: function() {
       var model = this.options.order.model;
       var material = this.options.order.material;
-      return (model.base_price + (model.sqm_price * this.getSqm())) * material.price_modifier;
+      return Math.floor((model.base_price + (model.sqm_price * this.getSqm())) * material.price_modifier);
     },
 
     /**
@@ -170,31 +234,35 @@
      * @api public
      */
     getSqm: function() {
-      var model = this.options.order.model;
-      return model.min_length * model.min_width / 1000000; // convert mm to m
+      return this.getLength() * this.getWidth() / 1000000; // convert mm to m
     },
 
     /**
-     * refreshUI method
+     * refresh method
      * @api public
      */
-    refreshUI: function() {
-      console.log(this.getModel());
-      console.log(this.getMaterial());
-
-      this.$modelsSlides.css('height', $(this.options.order.model.$element).outerHeight());
-
-      // Update labels
-      this.$modelLabel.html(this.options.order.model.name);
-      this.$priceLabel.html(this.getPrice());
-
-      // Set selected class
-      $('.tableflip__material', this.$materialsContainer).removeClass('selected');
-      $(this.options.order.material.$element).addClass('selected');
+    refresh: function() {
 
       // Slide model image into view
       var position = $(this.options.order.model.$element).position();
       this.$modelsSlides.css('left', (position.left * -1));
+
+      // Set slides height to match current model's image
+      this.$modelsSlides.css('height', $(this.options.order.model.$element).outerHeight());
+
+      // Set "selected" class
+      $('.tableflip__material', this.$materialsContainer).removeClass('selected');
+      $(this.options.order.material.$element).addClass('selected');
+
+      // Update controls
+      this.$widthControl.attr('min', this.options.order.model.min_width).attr('max', this.options.order.model.max_width).attr('value', this.options.order.width);
+      this.$lengthControl.attr('min', this.options.order.model.min_length).attr('max', this.options.order.model.max_length).attr('value', this.options.order.length);
+
+      // Update labels
+      this.$modelLabel.html(this.options.order.model.name);
+      this.$widthLabel.html((this.options.order.width / 10) + " cm");
+      this.$lengthLabel.html((this.options.order.length / 10) + " cm");
+      this.$priceLabel.html("Totalt: " + this.getPrice() + " SEK");
     }
 
   };
@@ -231,6 +299,8 @@
       model: null,
       material: null,
       finish: null,
+      width: 0,
+      length: 0,
       price: 0
     }
   };
