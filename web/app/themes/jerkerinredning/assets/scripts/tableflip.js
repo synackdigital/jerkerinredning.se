@@ -220,14 +220,24 @@
     },
 
     /**
+     * setPrice method
+     * @api public
+     */
+    setPrice: function() {
+      var model = this.options.order.model;
+      var material = this.options.order.material;
+
+      this.options.order.price = Math.ceil(Math.floor((model.base_price + (model.sqm_price * this.getSqm())) * material.price_modifier)/100) * 100;
+    },
+
+    /**
      * getPrice method
      * @api public
      */
     getPrice: function() {
-      var model = this.options.order.model;
-      var material = this.options.order.material;
+      // Re-calculate price before return
+      this.setPrice();
 
-      this.options.order.price = Math.floor((model.base_price + (model.sqm_price * this.getSqm())) * material.price_modifier);
       return this.options.order.price;
     },
 
@@ -244,6 +254,15 @@
      * @api public
      */
     refresh: function() {
+
+      // Format price into a nice string
+      var formattedPrice = this.getPrice().toString().split('').reverse();
+      $.each(formattedPrice, function(i, str) {
+        if (i !== 0 && i % 3 === 0) {
+          formattedPrice[i] = str + '&thinsp;';
+        }
+      });
+      formattedPrice = formattedPrice.reverse().join('');
 
       // Slide model image into view
       var position = $(this.options.order.model.$element).position();
@@ -264,7 +283,7 @@
       this.$modelLabel.html(this.options.order.model.name);
       this.$widthLabel.html((this.options.order.width / 10) + " cm");
       this.$lengthLabel.html((this.options.order.length / 10) + " cm");
-      this.$priceLabel.html("Totalt: " + this.getPrice() + " SEK");
+      this.$priceLabel.html("Beställ nu för " + formattedPrice + " SEK");
 
       console.log(JSON.stringify(this.options.order));
     }
