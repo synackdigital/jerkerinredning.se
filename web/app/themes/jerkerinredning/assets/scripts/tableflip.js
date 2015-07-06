@@ -226,7 +226,9 @@
     getPrice: function() {
       var model = this.options.order.model;
       var material = this.options.order.material;
-      return Math.floor((model.base_price + (model.sqm_price * this.getSqm())) * material.price_modifier);
+
+      this.options.order.price = Math.floor((model.base_price + (model.sqm_price * this.getSqm())) * material.price_modifier);
+      return this.options.order.price;
     },
 
     /**
@@ -263,6 +265,8 @@
       this.$widthLabel.html((this.options.order.width / 10) + " cm");
       this.$lengthLabel.html((this.options.order.length / 10) + " cm");
       this.$priceLabel.html("Totalt: " + this.getPrice() + " SEK");
+
+      console.log(JSON.stringify(this.options.order));
     }
 
   };
