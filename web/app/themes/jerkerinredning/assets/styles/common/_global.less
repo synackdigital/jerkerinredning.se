@@ -3,6 +3,15 @@
 body {
   text-rendering: optimizeLegibility;
   font-weight: @font-weight-normal;
+  padding-top: @navbar-height;
+}
+
+body.admin-bar {
+  padding-top: @navbar-height + 32;
+
+  .navbar-fixed-top {
+    top: 32px;
+  }
 }
 
 // Make all images responsive
