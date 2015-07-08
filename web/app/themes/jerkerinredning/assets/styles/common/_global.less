@@ -195,3 +195,31 @@ abbr {
 input::-moz-focus-inner {
   border: 0;
 }
+
+// Footer
+.content-info {
+  border-top: 1px solid @gray-light;
+}
+.footer__text {
+  &:extend(.font-serif-large);
+  text-align: center;
+  margin-top: @line-height-computed;
+  margin-bottom: (2 * @line-height-computed);
+
+  a {
+    white-space: nowrap;
+  }
+}
+
+.footer__links {
+  text-align: center;
+  margin-top: @line-height-computed;
+  margin-bottom: (4 * @line-height-computed);
+
+  a {
+    display: inline-block;
+    white-space: nowrap;
+    margin-left: .5em;
+    margin-right: .5em;
+  }
+}

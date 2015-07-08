@@ -1,6 +1,4 @@
 <?php
-  // {"configuration":{"model":"2","length":"1300","width":"900","material":"3","finish":"4"}}
-
   $models = get_sub_field( 'models' );
   $materials = get_sub_field( 'materials' );
   $finishes = get_sub_field( 'finishes' );
@@ -59,12 +57,6 @@
     <div class="tableflip__order">
       <span class="tableflip__label tableflip__label--price font-serif-xlarge">&nbsp;</span>
     </div>
-
-    <pre>
-      <?php print_r($models); ?>
-      <?php print_r($materials); ?>
-      <?php print_r($finishes); ?>
-    </pre>
 
   </div>
 </section>
