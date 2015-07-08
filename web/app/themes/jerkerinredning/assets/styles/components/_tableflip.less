@@ -9,7 +9,10 @@
 }
 
 // Models container
-.tableflip__models {}
+.tableflip__models {
+  margin-top: (2 * @line-height-computed);
+  margin-bottom: (2 * @line-height-computed);
+}
 
 .tableflip__model img {
   max-width: 960px;
@@ -23,13 +26,13 @@
 }
 
 .tableflip__label--model {
-  min-width: 6em;
+  min-width: 5em;
 }
 
 // Materials container
 .tableflip__materials {
-  padding-top: @line-height-computed;
-  padding-bottom: @line-height-computed;
+  margin-top: (2 * @line-height-computed);
+  margin-bottom: (2 * @line-height-computed);
 }
 
 .tableflip__material {
@@ -40,7 +43,7 @@
   img {
     border: 2px solid transparent;
     display: block;
-    max-width: 80%;
+    max-width: 60%;
     height: auto;
     margin: 0 auto 10px;
     border-radius: 50%;
@@ -54,8 +57,8 @@
 
 // Finishes container
 .tableflip__finishes {
-  margin-top: @line-height-computed;
-  margin-bottom: @line-height-computed;
+  margin-top: (2 * @line-height-computed);
+  margin-bottom: (2 * @line-height-computed);
 }
 
 .tableflip__finish {
@@ -75,12 +78,15 @@
 }
 
 // Dimensions container
-.tableflip__dimensions { }
+.tableflip__dimensions {
+  margin-top: (2 * @line-height-computed);
+  margin-bottom: (2 * @line-height-computed);
+}
 
 // Order container
 .tableflip__order {
-  margin-top: @line-height-computed;
-  margin-bottom: @line-height-computed;
+  margin-top: (2 * @line-height-computed);
+  margin-bottom: (2 * @line-height-computed);
 }
 
 .tableflip__order__price {
@@ -98,6 +104,7 @@
 
 // Slider slides
 .tableflip__slides {
+  overflow: hidden;
   position: relative;
   left: 0;
   transition: .6s ease-in-out;

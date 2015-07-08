@@ -5,14 +5,14 @@
 ?>
 
 <section class="page-section page-section_tableflip">
+
+  <?php if ( get_sub_field('headline') ): ?>
+  <h2 class="page-section-headline font-serif-xlarge"><span class="magic-underline"><?php the_sub_field('headline'); ?></span></h2>
+  <?php endif; ?>
+
   <div class="tableflip">
 
     <div class="tableflip__models">
-      <div class="tableflip__controls">
-        <span class="tableflip__control tableflip__control--prev">&lsaquo;</span>
-        <span class="tableflip__label tableflip__label--model">&nbsp;</span>
-        <span class="tableflip__control tableflip__control--next">&rsaquo;</span>
-      </div>
       <div class="tableflip__slides" style="width:<?php echo (100 * count($models)).'%'; ?>;">
         <?php foreach ( $models as $key => $model ) : ?>
         <?php unset($models[$key]['image']); $json_model = $models[$key]; ?>
@@ -20,6 +20,11 @@
           <?php echo sprintf('<img src="%s" alt="%s" width="%d" height="%d">', $model['image']['url'], $model['name'], $model['image']['width'], $model['image']['height']); ?>
         </div>
         <?php endforeach; ?>
+      </div>
+      <div class="tableflip__controls">
+        <span class="tableflip__control tableflip__control--prev">&lsaquo;</span>
+        <span class="tableflip__label tableflip__label--model">&nbsp;</span>
+        <span class="tableflip__control tableflip__control--next">&rsaquo;</span>
       </div>
     </div>
 

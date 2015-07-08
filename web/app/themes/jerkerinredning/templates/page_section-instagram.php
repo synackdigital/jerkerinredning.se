@@ -10,6 +10,11 @@ $instafeed_data = [
 ?>
 
 <section class="page-section page-section-instagram">
+
+  <?php if ( get_sub_field('headline') ): ?>
+  <h2 class="page-section-headline font-serif-xlarge"><span class="magic-underline"><?php the_sub_field('headline'); ?></span></h2>
+  <?php endif; ?>
+
   <div class="container">
     <div class="row row-nogutters instafeed-canvas instafeed-canvas-<?= $instafeed_data['resolution'] ?>" data-instafeed="<?= htmlentities(json_encode($instafeed_data), ENT_QUOTES); ?>"></div>
   </div>
