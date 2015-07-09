@@ -42,7 +42,7 @@
     this.$materialsContainer = $('.tableflip__materials', this.$element);
     this.$finishesContainer = $('.tableflip__finishes', this.$element);
 
-    this.$priceLabel = $('.tableflip__label--price', this.$element);
+    this.$priceControl = $('.tableflip__control--price', this.$element);
 
     // Fetch models from data-attribute
     $.each($('.tableflip__model', this.$modelsContainer), $.proxy(function(index, el) {
@@ -351,7 +351,7 @@
       this.$modelLabel.html(this.options.order.model.name);
       this.$widthLabel.html((this.options.order.width / 10) + " cm");
       this.$lengthLabel.html((this.options.order.length / 10) + " cm");
-      this.$priceLabel.html("Beställ nu för " + this.getPriceString());
+      this.$priceControl.html("Beställ nu för " + this.getPriceString());
 
       console.log(JSON.stringify(this.options.order));
     }

@@ -91,13 +91,16 @@
   margin-bottom: (2 * @line-height-computed);
 }
 
-.tableflip__order__price {
-  &:extend(.magic-underline);
-}
-
 // Controls
 .tableflip__control {
-  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.tableflip__control.tableflip__control--price {
+  &:extend(.font-serif-xlarge);
+  color: @link-color;
+  border: 1px solid @link-color;
 }
 
 
@@ -106,6 +109,7 @@
 
 // Slider slides
 .tableflip__slides {
+  height: 0;
   overflow: hidden;
   position: relative;
   left: 0;

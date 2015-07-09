@@ -5,6 +5,7 @@
 ?>
 
 <section class="page-section page-section_tableflip">
+  <?php if ( get_sub_field('id')): echo '<a name="'.get_sub_field('id').'"></a>'; endif; ?>
 
   <?php if ( get_sub_field('headline') ): ?>
   <h2 class="page-section-headline font-serif-xlarge"><span class="magic-underline"><?php the_sub_field('headline'); ?></span></h2>
@@ -22,27 +23,27 @@
         <?php endforeach; ?>
       </div>
       <div class="tableflip__controls">
-        <span class="tableflip__control tableflip__control--prev">&lsaquo;</span>
+        <button class="tableflip__control tableflip__control--prev">&lsaquo;</button>
         <span class="tableflip__label tableflip__label--model">&nbsp;</span>
-        <span class="tableflip__control tableflip__control--next">&rsaquo;</span>
+        <button class="tableflip__control tableflip__control--next">&rsaquo;</button>
       </div>
     </div>
 
     <div class="tableflip__materials">
       <?php foreach ( $materials as $key => $material ) : ?>
         <?php unset($materials[$key]['image']); $json_material = $materials[$key]; ?>
-      <div class="tableflip__material tableflip__control" data-tableflip-material="<?php echo htmlspecialchars(json_encode($json_material)); ?>">
+      <button class="tableflip__material tableflip__control" data-tableflip-material="<?php echo htmlspecialchars(json_encode($json_material)); ?>">
         <?php echo sprintf('<img src="%s" alt="%s" width="%d" height="%d">', $material['image']['url'], $material['name'], $material['image']['width'], $material['image']['height']); ?>
         <?php echo $material['name']; ?>
-      </div>
+      </button>
       <?php endforeach; ?>
     </div>
 
     <div class="tableflip__finishes">
       <?php foreach ( $finishes as $key => $finish ) : ?>
-      <div class="tableflip__finish tableflip__control" data-tableflip-finish="<?php echo htmlspecialchars(json_encode($finish)); ?>">
+      <button class="tableflip__finish tableflip__control" data-tableflip-finish="<?php echo htmlspecialchars(json_encode($finish)); ?>">
         <?php echo $finish['name']; ?>
-      </div>
+      </button>
       <?php endforeach; ?>
     </div>
 
@@ -60,7 +61,7 @@
     </div>
 
     <div class="tableflip__order">
-      <span class="tableflip__label tableflip__label--price font-serif-xlarge">&nbsp;</span>
+      <button class="tableflip__control tableflip__control--price btn btn-lg">&nbsp;</button>
     </div>
 
   </div>

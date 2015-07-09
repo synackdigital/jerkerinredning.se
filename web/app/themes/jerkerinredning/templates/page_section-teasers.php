@@ -17,6 +17,7 @@ endswitch;
 if ( $teasers_count > 0 ) : ?>
 
 <section class="page-section page-section-teasers">
+  <?php if ( get_sub_field('id')): echo '<a name="'.get_sub_field('id').'"></a>'; endif; ?>
 
   <?php if ( get_sub_field('headline') ): ?>
   <h2 class="page-section-headline font-serif-xlarge"><span class="magic-underline"><?php the_sub_field('headline'); ?></span></h2>
