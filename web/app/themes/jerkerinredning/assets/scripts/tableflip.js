@@ -279,7 +279,7 @@
       var finish = this.options.order.finish;
 
       // Ceil price to nearest 100
-      this.options.order.price = Math.ceil(Math.ceil((model.base_price + (model.sqm_price * this.getSqm())) * material.price_modifier * finish.price_modifier)/100) * 100;
+      this.options.order.price = Math.ceil(Math.ceil(model.base_price + (((model.sqm_price * this.getSqm()) * material.price_modifier) * finish.price_modifier))/100) * 100;
 
       if (refresh) {
         this.refresh();
