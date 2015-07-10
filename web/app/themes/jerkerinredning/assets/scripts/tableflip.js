@@ -92,10 +92,10 @@
 
       // Setup order
       this.setModel(0);
-      this.setWidth(1100);
-      this.setLength(2200);
-      this.setMaterial(0);
-      this.setFinish(0, true);
+      this.setWidth(800);
+      this.setLength(1850);
+      this.setMaterial(1);
+      this.setFinish(4, true);
 
       // Setup controls
       this.$modelsNextControl.on('click', $.proxy(function(event) {
