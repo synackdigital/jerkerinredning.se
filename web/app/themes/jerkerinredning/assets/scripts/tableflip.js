@@ -41,8 +41,10 @@
 
     this.$materialsContainer = $('.tableflip__materials', this.$element);
     this.$finishesContainer = $('.tableflip__finishes', this.$element);
+    this.$customerContainer = $('.tableflip__customer', this.$element);
+    this.$thankyouContainer = $('.tableflip__thankyou', this.$element);
 
-    this.$priceControl = $('.tableflip__control--price', this.$element);
+    this.$orderControl = $('.tableflip__control--order', this.$element);
 
     // Fetch models from data-attribute
     $.each($('.tableflip__model', this.$modelsContainer), $.proxy(function(index, el) {
@@ -90,6 +92,10 @@
     init: function () {
       console.log('(╯°□°）╯︵ ┻━┻');
 
+      // Hide order containers
+      this.$customerContainer.hide();
+      this.$thankyouContainer.hide();
+
       // Setup order
       this.setModel(0);
       this.setWidth(800);
@@ -106,6 +112,11 @@
       this.$modelsPrevControl.on('click', $.proxy(function(event) {
         event.preventDefault();
         this.setModel('prev', true);
+      }, this));
+
+      this.$orderControl.on('click', $.proxy(function(event) {
+        event.preventDefault();
+        this.sendOrder();
       }, this));
 
       this.$widthControl.on('input', $.proxy(function(event) {
@@ -351,9 +362,65 @@
       this.$modelLabel.html(this.options.order.model.name);
       this.$widthLabel.html((this.options.order.width / 10) + " cm");
       this.$lengthLabel.html((this.options.order.length / 10) + " cm");
-      this.$priceControl.html("Beställ nu för " + this.getPriceString());
+      this.$orderControl.html("Beställ nu för " + this.getPriceString());
+    },
 
-      console.log(JSON.stringify(this.options.order));
+    getOrderJSON: function() {
+      var order = this.options.order;
+      delete order.model.$element;
+      delete order.material.$element;
+      delete order.finish.$element;
+      return JSON.stringify(order, null, '\t');
+    },
+
+    sendOrder: function() {
+
+      // Dirty validation
+      var customerJSON = '';
+      var customerName = $('#tableflip__control__customer-name').val();
+      var customerEmail = $('#tableflip__control__customer-email').val();
+      var customerPhone = $('#tableflip__control__customer-phone').val();
+
+      if (customerName && customerEmail && customerPhone) {
+
+        // Create customer JSON
+        customerJSON = JSON.stringify({
+          name: customerName,
+          email: customerEmail,
+          phone: customerPhone
+        }, null, '\t');
+      } else {
+
+        // Show customer container if not already visible
+        this.$customerContainer.show('fast');
+      }
+
+      if (customerJSON !== '') {
+
+        // Compose order message
+        var orderMessage = this.getOrderJSON()+'\n\n'+customerJSON+'\n\n';
+
+        $.getJSON('https://mandrillapp.com/api/1.0/messages/send.json', {
+          "key": "Dc-Fq14eZF279Fst3umiOQ",
+          "message" : {
+            "subject": "Order from jerkerinredning.se",
+            "from_email": "post@jerker.eu",
+            "from_name": "Jerker Inredning & Form",
+            "to": [
+              {
+                "email": "post@jerker.eu",
+                "name": "Jerker Inredning & Form",
+                "type": "to"
+              }
+            ],
+            "text": orderMessage,
+          }
+        }, $.proxy(function(json, textStatus) {
+          this.$thankyouContainer.show('fast');
+          this.$customerContainer.hide('fast');
+          this.$orderControl.hide();
+        }, this));
+      }
     }
 
   };

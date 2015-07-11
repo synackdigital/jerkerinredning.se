@@ -61,7 +61,29 @@
     </div>
 
     <div class="tableflip__order">
-      <button class="tableflip__control tableflip__control--price btn btn-lg">&nbsp;</button>
+      <div class="tableflip__customer">
+        <p><strong>Vänligen fyll i dina uppgifter, så kontaktar vi dig för bekräftelse.</strong></p>
+        <p class="input-group">
+          <span class="input-group-addon">Namn</span>
+          <input type="text" class="form-control" id="tableflip__control__customer-name" placeholder="Jerker Johansson">
+        </p>
+        <p class="input-group">
+          <span class="input-group-addon">E-post</span>
+          <input type="email" class="form-control" id="tableflip__control__customer-email" placeholder="post@jerker.eu">
+        </p>
+        <p class="input-group">
+          <span class="input-group-addon">Telefon</span>
+          <input type="email" class="form-control" id="tableflip__control__customer-phone" placeholder="040–493 100">
+        </p>
+        <p><em>Tryck på knappen igen för att skicka</em></p>
+      </div>
+
+      <button class="tableflip__control tableflip__control--order btn btn-lg">&nbsp;</button>
+
+      <div class="tableflip__thankyou">
+        <p class="font-serif-large">Tack för din beställning</p>
+        <p>Vi återkommer till dig för en bekräftelse inom kort.</p>
+      </div>
     </div>
 
   </div>
