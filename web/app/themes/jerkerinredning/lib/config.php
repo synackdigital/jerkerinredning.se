@@ -23,7 +23,7 @@ add_theme_support('soil-disable-asset-versioning');   // Soil plugin disable ass
  */
 if (!defined('GOOGLE_ANALYTICS_ID')) {
   // Format: UA-XXXXX-Y (Note: Universal Analytics only)
-  define('GOOGLE_ANALYTICS_ID', '');
+  define('GOOGLE_ANALYTICS_ID', 'UA-65039081-1');
 }
 
 if (!defined('WP_ENV')) {
