@@ -62,7 +62,7 @@
 
     <div class="tableflip__order">
       <div class="tableflip__customer">
-        <p><strong>Vänligen fyll i dina uppgifter, så kontaktar vi dig för bekräftelse.</strong></p>
+        <p><strong>Vänligen fyll i dina uppgifter, så kontaktar vi dig.</strong></p>
         <p class="input-group">
           <span class="input-group-addon">Namn</span>
           <input type="text" class="form-control" id="tableflip__control__customer-name" placeholder="Jerker Johansson">

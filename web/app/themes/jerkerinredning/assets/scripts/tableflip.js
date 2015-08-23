@@ -290,7 +290,8 @@
       var finish = this.options.order.finish;
 
       // Ceil price to nearest 100
-      this.options.order.price = Math.ceil(Math.ceil(model.base_price + (((model.sqm_price * this.getSqm()) * material.price_modifier) * finish.price_modifier))/100) * 100;
+      this.options.order.price = Math.ceil((((model.base_price + (model.sqm_price * this.getSqm())) * material.price_modifier) * finish.price_modifier) / 100) * 100;
+
 
       if (refresh) {
         this.refresh();
@@ -314,16 +315,22 @@
      */
     getPriceString: function() {
 
-      // Insert space every third character from the last
-      var priceArray = this.getPrice().toString().split('').reverse();
-      $.each(priceArray, function(i, str) {
-        if (i !== 0 && i % 3 === 0) {
-          priceArray[i] = str + '&thinsp;';
-        }
-      });
+      if (0 < this.getPrice()) {
 
-      // Return price and currency as a string
-      return priceArray.reverse().join('') + '&thinsp;<abbr>' + this.options.order.currency + '</abbr>';
+        // Insert space every third character from the last
+        var priceArray = this.getPrice().toString().split('').reverse();
+        $.each(priceArray, function(i, str) {
+          if (i !== 0 && i % 3 === 0) {
+            priceArray[i] = str + '&thinsp;';
+          }
+        });
+
+        // Return price and currency as a string
+        return 'Beställ nu för ' + priceArray.reverse().join('') + '&thinsp;<abbr>' + this.options.order.currency + '</abbr>';
+      }
+      else {
+        return 'Skicka en offertförfrågan';
+      }
     },
 
     /**
@@ -362,7 +369,7 @@
       this.$modelLabel.html(this.options.order.model.name);
       this.$widthLabel.html((this.options.order.width / 10) + " cm");
       this.$lengthLabel.html((this.options.order.length / 10) + " cm");
-      this.$orderControl.html("Beställ nu för " + this.getPriceString());
+      this.$orderControl.html(this.getPriceString());
     },
 
     getOrderJSON: function() {
