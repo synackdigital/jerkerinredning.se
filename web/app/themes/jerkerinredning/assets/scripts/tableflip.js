@@ -100,7 +100,7 @@
       this.setModel(0);
       this.setWidth(800);
       this.setLength(1850);
-      this.setMaterial(1);
+      this.setMaterial(3);
       this.setFinish(4, true);
 
       // Setup controls
@@ -140,7 +140,7 @@
 
     /**
      * setModel method
-     * @param {Integer/string} [index]
+     * @param {Integer|String} [index]
      * @param {Boolean} [refresh]
      * @api public
      */
@@ -204,6 +204,16 @@
      */
     getMaterial: function() {
       return this.options.order.material;
+    },
+
+    /**
+     * verifyMaterialAvailability method
+     * @api public
+     */
+    verifyMaterialAvailability: function() {
+      if ( this.options.order.material.disable_for_model === this.options.order.model.name ) {
+        this.setMaterial(0, true);
+      }
     },
 
     /**
@@ -348,6 +358,11 @@
      */
     refresh: function() {
 
+      // Verify that current material is available for current model
+      if ( this.options.order.material ) {
+        this.verifyMaterialAvailability();
+      }
+
       // Slide model image into view
       var position = $(this.options.order.model.$element).position();
       this.$modelsSlides.css('left', (position.left * -1));
@@ -355,7 +370,16 @@
       // Set slides height to match current model's image
       this.$modelsSlides.css('height', $(this.options.order.model.$element).outerHeight());
 
-      // Set "selected" class
+      // Disable materials that are unavailable for the current model
+      $.each(this.options.materials, $.proxy(function(i, e) {
+        $(e.$element).removeClass('disabled');
+        if (e.disable_for_model === this.options.order.model.name) {
+          $(e.$element).addClass('disabled');
+        }
+      }, this));
+      this.verifyMaterialAvailability();
+
+      // Set selected elements
       $('.tableflip__material', this.$materialsContainer).removeClass('selected');
       $('.tableflip__finish', this.$finishesContainer).removeClass('selected');
       $(this.options.order.material.$element).addClass('selected');

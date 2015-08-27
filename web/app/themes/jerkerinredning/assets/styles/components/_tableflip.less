@@ -41,6 +41,7 @@
   display: inline-block;
   font-size: @font-size-small;
   width: 70px;
+  transition: .75s;
 
   img {
     border: 2px solid transparent;
@@ -54,6 +55,11 @@
   &.selected img {
     border-color: @body-bg;
     box-shadow: 0 0 4px 3px @brand-primary;
+  }
+
+  &.disabled {
+    opacity: .2;
+    cursor: default;
   }
 }
 
