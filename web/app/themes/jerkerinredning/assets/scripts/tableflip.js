@@ -100,7 +100,7 @@
       this.setModel(0);
       this.setWidth(800);
       this.setLength(1850);
-      this.setMaterial(3);
+      this.setMaterial(1);
       this.setFinish(4, true);
 
       // Setup controls
@@ -299,9 +299,14 @@
       var material = this.options.order.material;
       var finish = this.options.order.finish;
 
-      // Ceil price to nearest 100
-      this.options.order.price = Math.ceil((((model.base_price + (model.sqm_price * this.getSqm())) * material.price_modifier) * finish.price_modifier) / 100) * 100;
+      // Calculate exact price
+      var price = model.base_price + (this.getSqm() * model.sqm_price * material.price_modifier * finish.price_modifier);
 
+      // Round up to nearest 100
+      var roundPrice = Math.ceil(price / 100) * 100;
+
+      // Save price to order
+      this.options.order.price = roundPrice;
 
       if (refresh) {
         this.refresh();
