@@ -23,7 +23,7 @@ if ( $teasers_count > 0 ) : ?>
   <h2 class="page-section-headline font-serif-xlarge"><span class="magic-underline"><?php the_sub_field('headline'); ?></span></h2>
   <?php endif; ?>
 
-  <div class="container-fluid">
+  <div class="container-fluid <?php print (get_sub_field('max_width') === 'wide') ? 'container-fluid--wide' : ''; ?>">
     <div class="row">
       <?php
         if ( have_rows('teaser') ) : while ( have_rows('teaser') ) : the_row();

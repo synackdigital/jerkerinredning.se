@@ -37,3 +37,16 @@
   padding-right: @padding-base-horizontal;
   padding-left: @padding-base-horizontal;
 }
+
+// Clear Instagram grid layout when images are not square
+.page-section-instagram {
+  img {
+    width: 100%; // Force images to fill grid layout
+  }
+  .col-md-4:nth-child(3n+1) {
+    clear: left;
+  }
+  .col-md-3:nth-child(4n+1) {
+    clear: left;
+  }
+}

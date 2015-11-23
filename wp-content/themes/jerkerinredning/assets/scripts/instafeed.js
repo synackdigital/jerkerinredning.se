@@ -7,6 +7,11 @@ function initializeInstafeed($canvas) {
   // Retrieve data from the data-instafeed attribute
   $canvas_data = $canvas.data('instafeed');
 
+  var columns_class = 'col-md-3';
+  if ($canvas_data.resolution === 'standard_resolution') {
+    columns_class = 'col-md-4';
+  }
+
   // Create the Instafeed
   var instafeed = new Instafeed({
 
@@ -23,7 +28,7 @@ function initializeInstafeed($canvas) {
     links: $canvas_data.links,
 
     // HTML Template
-    template: '<div class="col-xs-12 col-sm-4 col-lg-3"><div class="thumbnail"><a href="{{link}}"><img src="{{image}}" alt="{{caption}}"></a></div></div>',
+    template: '<div class="col-xs-12 ' + columns_class + '"><div class="thumbnail"><a href="{{link}}"><img src="{{image}}" alt="{{caption}}"></a></div></div>',
 
     // Handle callbacks
     before: function() {},

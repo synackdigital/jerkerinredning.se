@@ -4,8 +4,20 @@ body {
   font-weight: @font-weight-normal;
 }
 
+// Container sizes
+.container-fluid--narrow {
+  max-width: 680px !important; // This will fit exactly 4 columns of small sized Instagram images
+}
 .container-fluid {
-  max-width: 1362px;
+  max-width: 1362px; // This will fit exactly 4 columns of medium sized Instagram images
+}
+.container-fluid--wide {
+  max-width: 1996px !important; // This will fit exactly 3 columns of large sized Instagram images
+}
+
+// Limit paragraph lengths in large thumbnail containers
+.thumbnail p {
+  max-width: 30em;
 }
 
 // Make all images responsive
@@ -65,21 +77,6 @@ abbr {
   font-weight: @font-weight-normal;
   line-height: 1.15;
   text-rendering: optimizeLegibility;
-}
-
-// Additional container classes
-.container-narrow {
-  .container-fixed();
-
-  @media (min-width: @screen-sm-min) {
-    width: (@container-sm * .66);
-  }
-  @media (min-width: @screen-md-min) {
-    width: (@container-md * .66);
-  }
-  @media (min-width: @screen-lg-min) {
-    width: (@container-lg * .66);
-  }
 }
 
 // Gutterless grid rows
