@@ -208,6 +208,7 @@ gulp.task('clean', require('del').bind(null, [path.dist]));
 // build step for that asset and inject the changes into the page.
 // See: http://www.browsersync.io
 gulp.task('watch', function() {
+  gulp.start('default');
   browserSync({
     proxy: config.devUrl,
     snippetOptions: {
