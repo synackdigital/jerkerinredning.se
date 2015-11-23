@@ -23,6 +23,9 @@
     'common': {
       init: function() { // JavaScript to be fired on all pages
 
+        // Enable FastClick
+        FastClick.attach(document.body);
+
         // Find and initialize Instafeed canvases
         $('.instafeed-canvas').each(function(i) {
           initializeInstafeed($(this));

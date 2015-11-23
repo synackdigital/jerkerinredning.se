@@ -4,6 +4,7 @@
       "files": [
         "scripts/main.js",
         "scripts/instafeed.js",
+        "scripts/fastclick.js",
         "scripts/tableflip.js"
       ],
       "main": true
