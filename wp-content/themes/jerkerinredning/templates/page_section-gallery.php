@@ -13,7 +13,7 @@ if ( count( $image_ids ) > 0 ) : ?>
   <h2 class="page-section-headline font-serif-xlarge"><span class="magic-underline"><?php the_sub_field('headline'); ?></span></h2>
   <?php endif; ?>
 
-  <div class="container">
+  <div class="container-fluid">
     <?php
       // Generate gallery shortcode
       $shortcode = '[gallery ids="' . implode(',', $image_ids) . '"]';

@@ -11,7 +11,7 @@ $tinymce = get_sub_field('tinymce');
   <h2 class="page-section-headline font-serif-xlarge"><span class="magic-underline"><?php the_sub_field('headline'); ?></span></h2>
   <?php endif; ?>
 
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-md-6">
         <div class="page-section-tiny_mce-content"><?= $tinymce ?></div>
