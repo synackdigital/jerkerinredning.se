@@ -10,6 +10,9 @@ img { &:extend(.img-responsive); }
 // Round image corners
 .main img { border-radius: @border-radius-base; }
 
+// Box shadow on images
+.main img { box-shadow: 0 1px 1px rgba(0,0,0,.15); }
+
 // Bold links in content
 .main a { font-weight: @font-weight-bold; }
 
@@ -204,7 +207,7 @@ input::-moz-focus-inner {
 
 // Footer
 .content-info {
-  border-top: 1px solid @gray-light;
+  border-top: 1px solid @gray-lighter;
 }
 .footer__text {
   &:extend(.font-serif-large);
