@@ -5,7 +5,8 @@
         "scripts/main.js",
         "scripts/instafeed.js",
         "scripts/fastclick.js",
-        "scripts/tableflip.js"
+        "scripts/tableflip.js",
+        "scripts/lightbox.js"
       ],
       "main": true
     },

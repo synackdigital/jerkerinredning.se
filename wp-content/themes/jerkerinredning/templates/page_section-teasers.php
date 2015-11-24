@@ -28,6 +28,7 @@ if ( $teasers_count > 0 ) : ?>
       <?php
         if ( have_rows('teaser') ) : while ( have_rows('teaser') ) : the_row();
           $image      = get_sub_field('image');
+          $gallery    = get_sub_field('gallery');
           $headline   = get_sub_field('headline');
           $subhead    = get_sub_field('subhead');
           $text       = get_sub_field('text');
@@ -36,13 +37,28 @@ if ( $teasers_count > 0 ) : ?>
       ?>
       <div class="<?= implode(' ', $column_classes); ?>">
         <div class="thumbnail">
-          <?php if ( !empty( $image ) ) : ?><img src="<?= $image['sizes']['medium']; ?>" alt="<?= $image['alt']; ?>"><?php endif; ?>
+
+          <?php if ( !empty( $image ) ) : ?>
+          <?php
+          if ( !empty( $gallery ) ) :
+            $gallery_json = array();
+            foreach ( $gallery as $gallery_item ) :
+              $gallery_json[] = array(
+                'url' => $gallery_item['sizes']['large']
+              );
+            endforeach;
+          endif;
+          ?>
+          <img src="<?= $image['sizes']['medium']; ?>" alt="<?= $image['alt']; ?>" <?php if (!empty($gallery_json)) : ?>data-lightbox='{<?php print json_encode($gallery_json); ?>}'<?php endif; ?>>
+          <?php unset($gallery_json); endif; ?>
+
           <div class="caption">
             <?php if ( !empty( $headline ) ) : ?><h1><span class="magic-underline"><?= $headline; ?></span></h1><?php endif; ?>
             <?php if ( !empty( $subhead ) ) : ?><h2><?= $subhead; ?></h2><?php endif; ?>
             <?php if ( !empty( $text ) ) : ?><?= $text; ?><?php endif; ?>
             <?php if ( !empty( $link_url ) && !empty( $link_label ) ) : ?><a class="page-section-link" href="<?= $link_url; ?>"><?= $link_label; ?></a><?php endif; ?>
           </div>
+
         </div>
       </div>
       <?php endwhile; endif; ?>
