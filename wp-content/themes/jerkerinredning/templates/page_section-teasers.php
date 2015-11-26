@@ -49,7 +49,7 @@ if ( $teasers_count > 0 ) : ?>
             endforeach;
           endif;
           ?>
-          <img src="<?= $image['sizes']['medium']; ?>" alt="<?= $image['alt']; ?>" <?php if (!empty($gallery_json)) : ?>data-lightbox='{<?php print json_encode($gallery_json); ?>}'<?php endif; ?>>
+          <img src="<?= $image['sizes']['medium']; ?>" alt="<?= $image['alt']; ?>" <?php if (!empty($gallery_json)) : ?>data-lightbox='<?php print json_encode($gallery_json); ?>'<?php endif; ?>>
           <?php unset($gallery_json); endif; ?>
 
           <div class="caption">

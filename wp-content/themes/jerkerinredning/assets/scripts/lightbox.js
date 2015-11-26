@@ -10,11 +10,18 @@
   var NAMESPACE = 'jrk.lightbox';
 
   /**
+   * Plugin DATA_ATTRIBUTE
+   * @type {String}
+   * @api private
+   */
+  var DATA_ATTRIBUTE = 'lightbox';
+
+  /**
    * Plugin SELECTOR
    * @type {String}
    * @api private
    */
-  var SELECTOR = '[data-lightbox]';
+  var SELECTOR = '[data-'+DATA_ATTRIBUTE+']';
 
   /**
    * Plugin constructor
@@ -43,8 +50,9 @@
      */
     init: function () {
       this.$container = this.$element.wrap('<div class="lightbox">').parent();
-
       this.$container.on('click', $.proxy(this.create, this));
+
+      this.data = this.$element.data(DATA_ATTRIBUTE);
     },
 
     /**
@@ -53,33 +61,85 @@
     create: function() {
       var elOffset = this.$element.offset();
       var $window = $(window);
+
+      // Lock <body> scrolling
+      $('body').addClass('is-locked');
+
+      // Create overlay and append to end of <body>
       this.$overlay = $('<div class="overlay is-hidden">').appendTo('body').css({
         'top': elOffset.top,
         'left': elOffset.left,
         'width': this.$element.outerWidth(),
         'height': this.$element.outerHeight()
       });
-      $('body').addClass('is-locked');
+
+      // Modify overlay props inside a timeout to ensure css transitions
       setTimeout($.proxy(function() {
         this.$overlay.removeClass('is-hidden').css({
           'top': '0',
           'left': '0',
-          'width': $window.outerWidth(),
-          'height': $window.outerHeight()
+          'width': '100%',
+          'height': '100%'
         });
       }, this), 1);
-      this.$overlay.on('click', $.proxy(this.destroy, this));
+
+      // Destroy slideshow on overlay click
+      this.$overlay.on('click', $.proxy(function(e) {
+        if (e.target === this.$overlay[0]) {
+          this.destroy();
+        }
+      }, this));
+
+      // Initialise SlickSlider after css transition ends
+      setTimeout($.proxy(function() {
+        this.initSlickSlider();
+      }, this), 1000 /* Must equal or supersede css transition duration */ );
     },
 
     /**
      * Destroy method
      */
     destroy: function() {
-      this.$overlay.addClass('is-hidden');
+
+      // Re-enable <body> scrolling
       $('body').removeClass('is-locked');
+
+      // Animate out overlay
+      this.$overlay.addClass('is-hidden');
       setTimeout($.proxy(function() {
+
+        // Destroy SlickSlider
+        this.$slider.slick('unslick');
+
+        // Remove overlay
         this.$overlay.remove();
-      }, this), 1000);
+
+      }, this), 1000 /* Must equal or supersede css transition duration */ );
+    },
+
+    /**
+     * InitSlickSlider method
+     */
+    initSlickSlider: function() {
+      var windowHeight = $(window).outerHeight();
+
+      // Create slider container and append images
+      this.$slider = $('<div>').appendTo(this.$overlay);
+      $.each(this.data, $.proxy(function(i, el) {
+        $('<div><img src="'+el.url+'"></div>').appendTo(this.$slider);
+      }, this));
+      $.each($('>div', this.$slider), function(i, el) {
+        $(el).css('height', windowHeight);
+      });
+
+      // Initialise SlickSlider on overlay
+      this.$slider.slick({
+        slidesToShow: 1
+      });
+    },
+
+    stopEventPropagation: function(e) {
+      e.stopPropagation();
     }
   };
 

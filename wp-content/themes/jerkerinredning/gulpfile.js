@@ -211,6 +211,7 @@ gulp.task('watch', function() {
   gulp.start('default');
   browserSync({
     proxy: config.devUrl,
+    open: false,
     snippetOptions: {
       whitelist: ['/wp-admin/admin-ajax.php'],
       blacklist: ['/wp-admin/**']

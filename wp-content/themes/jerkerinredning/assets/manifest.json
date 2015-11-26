@@ -5,6 +5,7 @@
         "scripts/main.js",
         "scripts/instafeed.js",
         "scripts/fastclick.js",
+        "scripts/slick-carousel.js",
         "scripts/tableflip.js",
         "scripts/lightbox.js"
       ],

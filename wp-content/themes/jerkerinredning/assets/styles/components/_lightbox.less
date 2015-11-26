@@ -6,21 +6,21 @@
   border-radius: @border-radius-base;
 
   &:after {
-    content: ' ';
+    content: 'bildgalleri [+]';
     position: absolute;
-    right: 0;
-    bottom: 8px;
-    width: 58px;
-    height: 44px;
-    background: white url('../images/noun_154211_cc.svg') center/50px no-repeat;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
+    right: -.5em;
+    bottom: -2.3em;
+    padding: .5em;
+    font-size: @font-size-base;
+    font-weight: @font-weight-bold;
+    font-variant: small-caps;
+    letter-spacing: .75px;
   }
 }
 
 .lightbox img {
   opacity: 1;
-  transition: opacity 120ms ease-out;
+  transition: opacity 120ms ease;
 }
 .lightbox:hover img {
   opacity: .7;
@@ -30,9 +30,26 @@
   backface-visibility: none;
   position: fixed;
   z-index: 1200;
-  background-color: fade(@gray-darker, 90%);
-  transition: all 720ms;
+  background-color: @gray-dark;
+  opacity: 1;
+  transition: all 720ms ease;
 }
 .overlay.is-hidden {
-  background-color: fade(@gray-darker, 0%);
+  opacity: 0;
+}
+
+.overlay:after {
+  content: '\00D7';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: .125em .5em;
+  background-color: @gray-dark;
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.overlay:after:hover {
+  color: @brand-primary;
 }

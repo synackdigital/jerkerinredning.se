@@ -5,7 +5,7 @@ extract($args);
 ?>
 <div id="acf-upgrade-wrap" class="wrap">
 	
-	<h2><?php _e("Advanced Custom Fields Database Upgrade",'acf'); ?></h2>
+	<h1><?php _e("Advanced Custom Fields Database Upgrade",'acf'); ?></h1>
 	
 	<p><?php _e("The following sites require a DB upgrade. Check the ones you want to update and then click “Upgrade Database”.",'acf'); ?></p>
 	
@@ -154,11 +154,11 @@ extract($args);
 				// vars
 				var $input = this.$inputs.eq( this.i ),
 					$tr = $input.closest('tr'),
-					text = '<?php _e('Upgrade complete'); ?>';
+					text = '<?php _e('Upgrade complete', 'acf'); ?>';
 				
 				
 				// add loading
-				$tr.find('.response').html('<i class="acf-loading"></i></span> <?php _e('Upgrading data to ' . $plugin_version); ?>');
+				$tr.find('.response').html('<i class="acf-loading"></i></span> <?php _e('Upgrading data to', 'acf'); ?> <?php echo $plugin_version; ?>');
 				
 				
 				// get results

@@ -1,0 +1,45 @@
+/**
+ * Slick Slider extras
+ */
+
+@font-face {
+  font-family: 'slick';
+  font-weight: normal;
+  font-style: normal;
+
+  src: url('../fonts/slick.eot');
+  src: url('../fonts/slick.eot?#iefix') format('embedded-opentype'), url('../fonts/slick.woff') format('woff'), url('../fonts/slick.ttf') format('truetype'), url('../fonts/slick.svg#slick') format('svg');
+}
+
+.slick-loading .slick-list {
+  background: transparent url('../images/ajax-loader.gif') center center no-repeat;
+}
+.slick-slide {
+  text-align: center;
+}
+.slick-slide:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.slick-slide img {
+  display: inline-block;
+  max-width: 90%;
+  max-height: 90%;
+  vertical-align: middle;
+  box-shadow: 0 1px 5px @gray-darker;
+  border-radius: @border-radius-base;
+}
+.slick-prev {
+  left: 5px;
+}
+[dir='rtl'] .slick-prev {
+  right: 5px;
+}
+.slick-next {
+  right: 5px;
+}
+[dir='rtl'] .slick-next {
+  left: 5px;
+}
