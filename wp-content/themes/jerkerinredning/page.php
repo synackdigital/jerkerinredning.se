@@ -2,6 +2,7 @@
 
 while (have_posts()) : the_post();
   do_action('get_header');
+  if (has_post_thumbnail()) get_template_part('templates/post-thumbnail');
   get_template_part('templates/header');
 ?>
 <main class="main" role="main">
