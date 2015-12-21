@@ -300,7 +300,10 @@
       var finish = this.options.order.finish;
 
       // Calculate exact price
-      var price = model.base_price + (this.getSqm() * model.sqm_price * material.price_modifier * finish.price_modifier);
+      var price = 0;
+      if (finish.price_modifier !== 0 && material.price_modifier !== 0) {
+        price = model.base_price + (this.getSqm() * model.sqm_price * material.price_modifier * finish.price_modifier);
+      }
 
       // Round up to nearest 100
       var roundPrice = Math.ceil(price / 100) * 100;
