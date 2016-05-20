@@ -90,7 +90,7 @@
      * @api public
      */
     init: function () {
-      console.log('(╯°□°）╯︵ ┻━┻');
+      // console.log('(╯°□°）╯︵ ┻━┻');
 
       // Hide order containers
       this.$customerContainer.hide();
