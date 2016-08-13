@@ -96,12 +96,12 @@
       this.$customerContainer.hide();
       this.$thankyouContainer.hide();
 
-      // Setup order
+      // Setup default order
       this.setModel(0);
       this.setWidth(800);
       this.setLength(1850);
-      this.setMaterial(1);
-      this.setFinish(4, true);
+      this.setMaterial(0);
+      this.setFinish(0, true);
 
       // Setup controls
       this.$modelsNextControl.on('click', $.proxy(function(event) {
