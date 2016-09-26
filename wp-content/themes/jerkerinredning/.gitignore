@@ -1,0 +1,6 @@
+# Dev dependencies
+node_modules/
+bower_components/
+
+# Cache-busted dist files
+dist/**/*-*.*
