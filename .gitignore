@@ -7,6 +7,7 @@
 Thumbs.db
 
 # wordpress specific
+.htaccess
 wp-config.php
 wp-content/uploads/
 wp-content/blogs.dir/
@@ -31,6 +32,7 @@ wp-content/mysql.sql
 # wp core (as of 3.4.1)
 /db-config.php
 /index.php
+/licens-sv_SE.txt
 /license.txt
 /readme.html
 /wp-activate.php
