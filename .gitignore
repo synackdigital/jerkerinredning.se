@@ -62,6 +62,7 @@ wp-content/mysql.sql
 /wp-content/index.php
 /wp-content/themes/twenty*
 /wp-content/themes/index.php
+/wp-content/plugins/*
 /wp-content/plugins/index.php
 
 # large/disallowed file types
