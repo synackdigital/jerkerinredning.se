@@ -27,9 +27,9 @@
         FastClick.attach(document.body);
 
         // Find and initialize Instafeed canvases
-        $('.instafeed-canvas').each(function(i) {
-          initializeInstafeed($(this));
-        });
+        // $('.instafeed-canvas').each(function(i) {
+          // initializeInstafeed($(this));
+        // });
 
         // Catch clicks on anchor links to perform smooth scrolling
         $('a[href*=#]:not([href=#])').click(function() {
