@@ -116,7 +116,12 @@
 
       this.$orderControl.on('click', $.proxy(function(event) {
         event.preventDefault();
-        this.sendOrder();
+        if (this.getCustomerJSON()) {
+          this.mailOrder();
+        }
+        else {
+          this.$customerContainer.show('fast');
+        }
       }, this));
 
       this.$widthControl.on('input', $.proxy(function(event) {
@@ -412,54 +417,64 @@
       return JSON.stringify(order, null, '\t');
     },
 
-    sendOrder: function() {
-
-      // Dirty validation
+    getCustomerJSON: function() {
       var customerJSON = '';
       var customerName = $('#tableflip__control__customer-name').val();
       var customerEmail = $('#tableflip__control__customer-email').val();
       var customerPhone = $('#tableflip__control__customer-phone').val();
 
+      // Dirty validation
       if (customerName && customerEmail && customerPhone) {
-
-        // Create customer JSON
-        customerJSON = JSON.stringify({
+        return JSON.stringify({
           name: customerName,
           email: customerEmail,
           phone: customerPhone
         }, null, '\t');
       } else {
-
-        // Show customer container if not already visible
-        this.$customerContainer.show('fast');
+        return false;
       }
+    },
 
-      if (customerJSON !== '') {
+    mailOrder: function() {
+      $.post(PHPVAR.ajaxurl, {
+        'action': 'mail_tableflip_order', // wp_ajax hook
+        'data': this.compileOrderData()
+      }, function(data, textStatus, jqXHR) {
+        console.log(data);
+        console.log(textStatus);
+        console.log(jqXHR);
+        if (textStatus === 'success') {
+          // this.$thankyouContainer.show('fast');
+          // this.$customerContainer.hide('fast');
+          // this.$orderControl.hide();
+        }
+      });
+    },
 
-        // Compose order message
-        var orderMessage = this.getOrderJSON()+'\n\n'+customerJSON+'\n\n';
+    compileOrderData: function() {
 
-        $.getJSON('https://mandrillapp.com/api/1.0/messages/send.json', {
-          "key": "Dc-Fq14eZF279Fst3umiOQ",
-          "message" : {
-            "subject": "Order from jerkerinredning.se",
-            "from_email": "post@jerker.eu",
-            "from_name": "Jerker Inredning & Form",
-            "to": [
-              {
-                "email": "post@jerker.eu",
-                "name": "Jerker Inredning & Form",
-                "type": "to"
-              }
-            ],
-            "text": orderMessage,
-          }
-        }, $.proxy(function(json, textStatus) {
-          this.$thankyouContainer.show('fast');
-          this.$customerContainer.hide('fast');
-          this.$orderControl.hide();
-        }, this));
-      }
+      return '{\"order\":'+this.getOrderJSON()+',\"customer\":'+this.getCustomerJSON()+'}';
+
+      // $.getJSON('https://mandrillapp.com/api/1.0/messages/send.json', {
+      //   "key": "Dc-Fq14eZF279Fst3umiOQ",
+      //   "message" : {
+      //     "subject": "Order from jerkerinredning.se",
+      //     "from_email": "post@jerker.eu",
+      //     "from_name": "Jerker Inredning & Form",
+      //     "to": [
+      //       {
+      //         "email": "post@jerker.eu",
+      //         "name": "Jerker Inredning & Form",
+      //         "type": "to"
+      //       }
+      //     ],
+      //     "text": orderMessage,
+      //   }
+      // }, $.proxy(function(json, textStatus) {
+      //   this.$thankyouContainer.show('fast');
+      //   this.$customerContainer.hide('fast');
+      //   this.$orderControl.hide();
+      // }, this));
     }
 
   };

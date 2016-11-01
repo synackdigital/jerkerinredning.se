@@ -179,9 +179,17 @@ if (GOOGLE_ANALYTICS_ID) {
  * Load up PHP parameters to make them available in js
  */
 function php_to_js_vars() {
-  return function_exists('get_field') ? [
-    'instagram_client_id' => get_field('instagram_client_id', 'option'),
-    'instagram_user_id' => get_field('instagram_user_id', 'option'),
-    'instagram_access_token' => get_field('instagram_access_token', 'option')
-  ] : [];
+  $vars = array(
+    'ajaxurl' => admin_url( 'admin-ajax.php' )
+  );
+
+  if (function_exists('get_field')){
+    array_merge($vars, array(
+      'instagram_client_id' => get_field('instagram_client_id', 'option'),
+      'instagram_user_id' => get_field('instagram_user_id', 'option'),
+      'instagram_access_token' => get_field('instagram_access_token', 'option')
+    ));
+  }
+
+  return $vars;
 }
