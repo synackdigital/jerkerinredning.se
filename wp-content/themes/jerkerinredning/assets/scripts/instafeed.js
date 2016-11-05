@@ -17,7 +17,7 @@ function initializeInstafeed($canvas) {
 
     // Fetch credentials from PHPVAR
     clientId: PHPVAR.instagram_client_id,
-    userId: parseInt(PHPVAR.instagram_user_id),
+    userId: PHPVAR.instagram_user_id,
     accessToken: PHPVAR.instagram_access_token,
 
     // Create attribues
@@ -34,7 +34,11 @@ function initializeInstafeed($canvas) {
     before: function() {},
     success: function() {},
     after: function() {},
-    error: function() {}
+    error: function(msg) {
+      if (console !== undefined) {
+        console.log(msg);
+      }
+    }
   });
   instafeed.run();
 }
