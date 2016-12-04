@@ -2,6 +2,7 @@
 // Typography
 body {
   font-weight: @font-weight-normal;
+  font-family: @font-family-sans-serif;
 }
 
 // Scroll-lock body
@@ -34,54 +35,29 @@ img { &:extend(.img-responsive); }
 // Box shadow on images
 .main img { box-shadow: 0 1px 1px rgba(0,0,0,.35); }
 
-// Bold links in content
-.main a { font-weight: @font-weight-bold; }
-
 // Reset headlines
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.6;
-  font-family: inherit;
   font-size: @font-size-large;
-  font-weight: @font-weight-bold;
+  font-weight: @headings-font-weight;
 }
 
 // Subheads
 h1+h2, h2+h3, h3+h4, h4+h5, h5+h6 {
   margin-top: -.5em;
   font-size: @font-size-base;
+  font-weight: @font-weight-bold;
+}
+
+// Paragraphs
+p {
+  font-family: @font-family-serif;
 }
 
 // Abbreviations
 abbr {
   text-transform: lowercase;
   font-variant: small-caps;
-}
-
-// Didot classes
-// This font is only available in three sizes, italic, single-weight
-.font-serif-xxlarge {
-  font-family: @font-family-serif-xxlarge;
-  font-size: @font-size-xxlarge;
-  font-style: italic;
-  font-weight: @font-weight-normal;
-  line-height: 1.05;
-  text-rendering: optimizeLegibility;
-}
-.font-serif-xlarge {
-  font-family: @font-family-serif-xlarge;
-  font-size: @font-size-xlarge;
-  font-style: italic;
-  font-weight: @font-weight-normal;
-  line-height: 1.1;
-  text-rendering: optimizeLegibility;
-}
-.font-serif-large {
-  font-family: @font-family-serif-large;
-  font-size: @font-size-large;
-  font-style: italic;
-  font-weight: @font-weight-normal;
-  line-height: 1.15;
-  text-rendering: optimizeLegibility;
 }
 
 // Gutterless grid rows
@@ -93,21 +69,6 @@ abbr {
   .row-nogutters & {
     padding-right: 0;
     padding-left: 0;
-  }
-}
-
-// Magic underlines
-// https://medium.com/designing-medium/crafting-link-underlines-on-medium-7c03a9274f9
-.magic-underline {
-  display: inline;
-  text-shadow: -.05em -.05em 0 white, .05em -.05em 0 white, -.05em .05em 0 white, .05em .05em 0 white;
-  background-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.2) 50%);
-  background-repeat: repeat-x;
-  background-size: 2px 2px;
-  background-position: 0 .98em;
-
-  &, a {
-    text-decoration: none !important;
   }
 }
 
@@ -216,7 +177,6 @@ input::-moz-focus-inner {
   border-top: 1px solid @gray-lighter;
 }
 .footer__text {
-  &:extend(.font-serif-large);
   text-align: center;
   margin-top: @line-height-computed;
   margin-bottom: (2 * @line-height-computed);

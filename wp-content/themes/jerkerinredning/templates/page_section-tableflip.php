@@ -8,7 +8,7 @@
   <?php if ( get_sub_field('id')): echo '<a name="'.get_sub_field('id').'"></a>'; endif; ?>
 
   <?php if ( get_sub_field('headline') ): ?>
-  <h2 class="page-section-headline font-serif-xlarge"><span class="magic-underline"><?php the_sub_field('headline'); ?></span></h2>
+  <h2 class="page-section-headline"><?php the_sub_field('headline'); ?></h2>
   <?php endif; ?>
 
   <div class="tableflip">
@@ -49,12 +49,12 @@
 
     <div class="tableflip__dimensions">
       <div class="range-slider">
-        <span class="font-serif-large">Bredd</span>
+        Bredd
         <input class="tableflip__control tableflip__control--width range-input" type="range" value="0" min="0" max="0" step="10">
         <span class="tableflip__label tableflip__label--width range-label">&nbsp;</span>
       </div>
       <div class="range-slider">
-        <span class="font-serif-large">Längd</span>
+        Längd
         <input class="tableflip__control tableflip__control--length range-input" type="range" value="0" min="0" max="0" step="10">
         <span class="tableflip__label tableflip__label--length range-label">&nbsp;</span>
       </div>
@@ -81,7 +81,7 @@
       <button class="tableflip__control tableflip__control--order btn btn-lg">&nbsp;</button>
 
       <div class="tableflip__thankyou">
-        <p class="font-serif-large">Tack för din beställning</p>
+        <h3>Tack för din beställning</h3>
         <p>Vi återkommer till dig för en bekräftelse inom kort.</p>
       </div>
     </div>

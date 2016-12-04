@@ -22,7 +22,8 @@
 }
 
 .tableflip__models .tableflip__controls {
-  &:extend(.font-serif-xxlarge);
+  font-size: @font-size-xxlarge;
+  font-family: @font-family-serif;
   * {
     display: inline-block;
   }
@@ -41,6 +42,7 @@
 .tableflip__material {
   display: inline-block;
   font-size: @font-size-small;
+  letter-spacing: 0.5px;
   width: 70px;
   transition: .75s;
 
@@ -75,6 +77,7 @@
   border-radius: @border-radius-large;
 
   font-size: @font-size-small;
+  letter-spacing: 0.5px;
 
   display: inline-block;
   padding: @padding-base-vertical @padding-base-horizontal;
@@ -114,7 +117,6 @@
 }
 
 .tableflip__control.tableflip__control--order {
-  &:extend(.font-serif-xlarge);
   color: @link-color;
   border: 1px solid @link-color;
 }

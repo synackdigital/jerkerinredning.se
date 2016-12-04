@@ -23,6 +23,13 @@
     'common': {
       init: function() { // JavaScript to be fired on all pages
 
+        // Load webfonts
+        WebFont.load({
+          google: {
+            families: ['Roboto:400,600', 'Domine:400']
+          }
+        });
+
         // Enable FastClick
         FastClick.attach(document.body);
 
