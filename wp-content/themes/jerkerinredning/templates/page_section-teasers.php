@@ -20,7 +20,7 @@ if ( $teasers_count > 0 ) : ?>
   <?php if ( get_sub_field('id')): echo '<a name="'.get_sub_field('id').'"></a>'; endif; ?>
 
   <?php if ( get_sub_field('headline') ): ?>
-  <h2 class="page-section-headline font-serif-xlarge"><span class="magic-underline"><?php the_sub_field('headline'); ?></span></h2>
+  <h2 class="page-section-headline"><?php the_sub_field('headline'); ?></h2>
   <?php endif; ?>
 
   <div class="container-fluid <?php print (get_sub_field('max_width') === 'wide') ? 'container-fluid--wide' : ''; ?>">
@@ -53,7 +53,7 @@ if ( $teasers_count > 0 ) : ?>
           <?php unset($gallery_json); endif; ?>
 
           <div class="caption">
-            <?php if ( !empty( $headline ) ) : ?><h1><span class="magic-underline"><?= $headline; ?></span></h1><?php endif; ?>
+            <?php if ( !empty( $headline ) ) : ?><h1><?= $headline; ?></h1><?php endif; ?>
             <?php if ( !empty( $subhead ) ) : ?><h2><?= $subhead; ?></h2><?php endif; ?>
             <?php if ( !empty( $text ) ) : ?><?= $text; ?><?php endif; ?>
             <?php if ( !empty( $link_url ) && !empty( $link_label ) ) : ?><a class="page-section-link" href="<?= $link_url; ?>"><?= $link_label; ?></a><?php endif; ?>

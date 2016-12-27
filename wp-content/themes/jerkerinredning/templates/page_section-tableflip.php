@@ -8,7 +8,7 @@
   <?php if ( get_sub_field('id')): echo '<a name="'.get_sub_field('id').'"></a>'; endif; ?>
 
   <?php if ( get_sub_field('headline') ): ?>
-  <h2 class="page-section-headline font-serif-xlarge"><span class="magic-underline"><?php the_sub_field('headline'); ?></span></h2>
+  <h2 class="page-section-headline"><?php the_sub_field('headline'); ?></h2>
   <?php endif; ?>
 
   <div class="tableflip">
@@ -49,12 +49,12 @@
 
     <div class="tableflip__dimensions">
       <div class="range-slider">
-        <span class="font-serif-large">Bredd</span>
+        Bredd
         <input class="tableflip__control tableflip__control--width range-input" type="range" value="0" min="0" max="0" step="10">
         <span class="tableflip__label tableflip__label--width range-label">&nbsp;</span>
       </div>
       <div class="range-slider">
-        <span class="font-serif-large">Längd</span>
+        Längd
         <input class="tableflip__control tableflip__control--length range-input" type="range" value="0" min="0" max="0" step="10">
         <span class="tableflip__label tableflip__label--length range-label">&nbsp;</span>
       </div>
@@ -62,26 +62,25 @@
 
     <div class="tableflip__order">
       <div class="tableflip__customer">
-        <p><strong>Vänligen fyll i dina uppgifter, så kontaktar vi dig.</strong></p>
-        <p class="input-group">
-          <span class="input-group-addon">Namn</span>
-          <input type="text" class="form-control" id="tableflip__control__customer-name" placeholder="Jerker Johansson">
-        </p>
-        <p class="input-group">
-          <span class="input-group-addon">E-post</span>
-          <input type="email" class="form-control" id="tableflip__control__customer-email" placeholder="post@jerker.eu">
-        </p>
-        <p class="input-group">
-          <span class="input-group-addon">Telefon</span>
-          <input type="email" class="form-control" id="tableflip__control__customer-phone" placeholder="040–493 100">
-        </p>
-        <p><em>Tryck på knappen igen för att skicka</em></p>
+        <p class="lead">Uppskattat pris <span class="tableflip__label--price">[&#8943;]</span></p>
+        <p><strong>Vänligen fyll i dina uppgifter, så kontaktar vi dig. Glöm inte att ange e-post eller telefonnummer.</strong></p>
+        <div class="input-group" style="margin-bottom:0.5em">
+          <span class="input-group-addon" style="min-width:6em;text-align:left;">Namn</span>
+          <input type="text" class="form-control" id="tableflip__control__customer-name">
+        </div>
+        <div class="input-group" style="margin-bottom:0.5em">
+          <span class="input-group-addon" style="min-width:6em;text-align:left;">E-post</span>
+          <input type="email" class="form-control" id="tableflip__control__customer-email">
+        </div>
+        <div class="input-group" style="margin-bottom:1em">
+          <span class="input-group-addon" style="min-width:6em;text-align:left;">Telefon</span>
+          <input type="email" class="form-control" id="tableflip__control__customer-phone">
+        </div>
+        <button class="tableflip__control tableflip__control--order btn btn-lg btn-block">Skicka offertförfrågan</button>
       </div>
 
-      <button class="tableflip__control tableflip__control--order btn btn-lg">&nbsp;</button>
-
       <div class="tableflip__thankyou">
-        <p class="font-serif-large">Tack för din beställning</p>
+        <h3>Tack för din beställning</h3>
         <p>Vi återkommer till dig för en bekräftelse inom kort.</p>
       </div>
     </div>

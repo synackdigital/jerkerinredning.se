@@ -23,6 +23,13 @@
     'common': {
       init: function() { // JavaScript to be fired on all pages
 
+        // Load webfonts
+        WebFont.load({
+          google: {
+            families: ['Roboto:400,600', 'Domine:400']
+          }
+        });
+
         // Enable FastClick
         FastClick.attach(document.body);
 
@@ -32,7 +39,7 @@
         });
 
         // Catch clicks on anchor links to perform smooth scrolling
-        $('a[href*=#]:not([href=#])').click(function() {
+        $('a[href^="#"]').click(function() {
           if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
