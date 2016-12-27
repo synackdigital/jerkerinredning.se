@@ -10,25 +10,23 @@ function mail_tableflip_order() {
 
     $data = json_decode(stripslashes($_POST['data']), true);
 
-    $to = array('frebro@gmail.com');
-    $subject = 'Beställning från jerkerinredning.se';
-    $message = '<p>'
-      . 'En beställning skickades från '.$data['customer']['name']
-      . '<br>'
-      . 'Tel: '.$data['customer']['phone']
-      . '<br>'
-      . 'Mail: '.$data['customer']['email']
-      . '<br><br>'
-      . $data['order']['model']['name']
-      . ' i '.$data['order']['material']['name']
-      . ' med '.$data['order']['finish']['name']
-      . '<br>'
-      . 'Mått: '.$data['order']['width']
-      . '×'.$data['order']['length']
-      . '<br>'
-      . 'Pris: '.$data['order']['price']
-      . ' '.$data['order']['currency']
-      . '</p>';
+    // Get recipient email address from ACF options page, or fallback to admin email
+    if (function_exists('get_field') && get_field('order_recipient_email', 'option')):
+      $to = get_field('order_recipient_email', 'option');
+    else:
+      $to = get_option('admin_email');
+    endif;
+
+    $subject = 'En beställning från jerkerinredning.se';
+    $message = ''
+      . 'En beställning skickades från <strong>'.$data['customer']['name'].'</strong><br>'
+      . 'Telefon: '.$data['customer']['phone'].'<br>'
+      . 'E-post: '.$data['customer']['email'].'<br><br>'
+      . '<strong>'.$data['order']['model']['name'].'</strong>, '
+      . $data['order']['material']['name'].' '
+      . $data['order']['finish']['name'].'<br><br>'
+      . 'Bredd/längd: '.$data['order']['width'].'/'.$data['order']['length'].'<br>'
+      . 'Angivet pris: '.$data['order']['price'].' '.$data['order']['currency'];
 
     add_filter('wp_mail_content_type', 'set_html_content_type');
 
