@@ -38,6 +38,7 @@
     this.$widthLabel = $('.tableflip__label--width', this.$element);
     this.$lengthControl = $('.tableflip__control--length', this.$element);
     this.$lengthLabel = $('.tableflip__label--length', this.$element);
+    this.$priceLabel = $('.tableflip__label--price', this.$element);
 
     this.$materialsContainer = $('.tableflip__materials', this.$element);
     this.$finishesContainer = $('.tableflip__finishes', this.$element);
@@ -92,8 +93,7 @@
     init: function () {
       // console.log('(╯°□°）╯︵ ┻━┻');
 
-      // Hide order containers
-      this.$customerContainer.hide();
+      // Hide message containers
       this.$thankyouContainer.hide();
 
       // Setup default order
@@ -117,10 +117,7 @@
       this.$orderControl.on('click', $.proxy(function(event) {
         event.preventDefault();
         if (this.getCustomerJSON()) {
-          this.mailOrder();
-        }
-        else {
-          this.$customerContainer.show('fast');
+          this.sendOrder();
         }
       }, this));
 
@@ -347,13 +344,13 @@
             priceArray[i] = str + '&thinsp;';
           }
         });
+        priceArray = priceArray.reverse().join('');
 
         // Return price and currency as a string
-        return 'Beställ nu för ' + priceArray.reverse().join('') + '&thinsp;<abbr>' + this.options.order.currency + '</abbr>';
+        return priceArray + '&thinsp;<abbr>' + this.options.order.currency + '</abbr>';
       }
-      else {
-        return 'Skicka en offertförfrågan';
-      }
+
+      return false;
     },
 
     /**
@@ -406,10 +403,16 @@
       this.$modelLabel.html(this.options.order.model.name);
       this.$widthLabel.html((this.options.order.width / 10) + " cm");
       this.$lengthLabel.html((this.options.order.length / 10) + " cm");
-      this.$orderControl.html(this.getPriceString());
+      this.$priceLabel.html(this.getPriceString());
     },
 
-    getOrderJSON: function() {
+    /**
+     * getProductJSON method
+     * Returns a JSON string of product data
+     * @return {String}
+     * @api public
+     */
+    getProductJSON: function() {
       var order = this.options.order;
       delete order.model.$element;
       delete order.material.$element;
@@ -417,13 +420,19 @@
       return JSON.stringify(order, null, '\t');
     },
 
+    /**
+     * getCustomerJSON method
+     * Returns a JSON string of customer data
+     * @return {String}
+     * @api public
+     */
     getCustomerJSON: function() {
       var customerJSON = '';
       var customerName = $('#tableflip__control__customer-name').val();
       var customerEmail = $('#tableflip__control__customer-email').val();
       var customerPhone = $('#tableflip__control__customer-phone').val();
 
-      // Dirty validation
+      // TODO: Proper validation
       if (customerName && customerEmail && customerPhone) {
         return JSON.stringify({
           name: customerName,
@@ -435,46 +444,37 @@
       }
     },
 
-    mailOrder: function() {
-      $.post(PHPVAR.ajaxurl, {
-        'action': 'mail_tableflip_order', // wp_ajax hook
-        'data': this.compileOrderData()
-      }, function(data, textStatus, jqXHR) {
-        console.log(data);
-        console.log(textStatus);
-        console.log(jqXHR);
-        if (textStatus === 'success') {
-          // this.$thankyouContainer.show('fast');
-          // this.$customerContainer.hide('fast');
-          // this.$orderControl.hide();
-        }
-      });
+    /**
+     * getOrderJSON method
+     * Returns a JSON string of order data
+     * @return {String}
+     * @api public
+     */
+    getOrderJSON: function() {
+      return '{\"order\":'+this.getProductJSON()+',\"customer\":'+this.getCustomerJSON()+'}';
     },
 
-    compileOrderData: function() {
+    /**
+     * sendOrder method
+     * Send order JSON to the mail script and handles it's response
+     * @api public
+     */
+    sendOrder: function() {
 
-      return '{\"order\":'+this.getOrderJSON()+',\"customer\":'+this.getCustomerJSON()+'}';
+      // Send via ajax to mail script URL set with PHPVAR
+      $.post(PHPVAR.ajaxurl, {
+        'action': 'mail_tableflip_order', // wp_ajax hook
+        'data': this.getOrderJSON()
+      }, $.proxy(function(data, textStatus, jqXHR) {
 
-      // $.getJSON('https://mandrillapp.com/api/1.0/messages/send.json', {
-      //   "key": "Dc-Fq14eZF279Fst3umiOQ",
-      //   "message" : {
-      //     "subject": "Order from jerkerinredning.se",
-      //     "from_email": "post@jerker.eu",
-      //     "from_name": "Jerker Inredning & Form",
-      //     "to": [
-      //       {
-      //         "email": "post@jerker.eu",
-      //         "name": "Jerker Inredning & Form",
-      //         "type": "to"
-      //       }
-      //     ],
-      //     "text": orderMessage,
-      //   }
-      // }, $.proxy(function(json, textStatus) {
-      //   this.$thankyouContainer.show('fast');
-      //   this.$customerContainer.hide('fast');
-      //   this.$orderControl.hide();
-      // }, this));
+        // TODO: Handle errors
+        // See complete list of $.post status texts at jQuery docs
+        if (textStatus === 'success') {
+          this.$thankyouContainer.show();
+          this.$customerContainer.hide();
+          this.$orderControl.hide();
+        }
+      }, this));
     }
 
   };

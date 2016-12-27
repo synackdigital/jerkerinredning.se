@@ -62,23 +62,22 @@
 
     <div class="tableflip__order">
       <div class="tableflip__customer">
-        <p><strong>Vänligen fyll i dina uppgifter, så kontaktar vi dig.</strong></p>
-        <p class="input-group">
-          <span class="input-group-addon">Namn</span>
-          <input type="text" class="form-control" id="tableflip__control__customer-name" placeholder="Jerker Johansson">
-        </p>
-        <p class="input-group">
-          <span class="input-group-addon">E-post</span>
-          <input type="email" class="form-control" id="tableflip__control__customer-email" placeholder="post@jerker.eu">
-        </p>
-        <p class="input-group">
-          <span class="input-group-addon">Telefon</span>
-          <input type="email" class="form-control" id="tableflip__control__customer-phone" placeholder="040–493 100">
-        </p>
-        <p><em>Tryck på knappen igen för att skicka</em></p>
+        <p class="lead">Uppskattat pris <span class="tableflip__label--price">[&#8943;]</span></p>
+        <p><strong>Vänligen fyll i dina uppgifter, så kontaktar vi dig. Glöm inte att ange e-post eller telefonnummer.</strong></p>
+        <div class="input-group" style="margin-bottom:0.5em">
+          <span class="input-group-addon" style="min-width:6em;text-align:left;">Namn</span>
+          <input type="text" class="form-control" id="tableflip__control__customer-name">
+        </div>
+        <div class="input-group" style="margin-bottom:0.5em">
+          <span class="input-group-addon" style="min-width:6em;text-align:left;">E-post</span>
+          <input type="email" class="form-control" id="tableflip__control__customer-email">
+        </div>
+        <div class="input-group" style="margin-bottom:1em">
+          <span class="input-group-addon" style="min-width:6em;text-align:left;">Telefon</span>
+          <input type="email" class="form-control" id="tableflip__control__customer-phone">
+        </div>
+        <button class="tableflip__control tableflip__control--order btn btn-lg btn-block">Skicka offertförfrågan</button>
       </div>
-
-      <button class="tableflip__control tableflip__control--order btn btn-lg">&nbsp;</button>
 
       <div class="tableflip__thankyou">
         <h3>Tack för din beställning</h3>
