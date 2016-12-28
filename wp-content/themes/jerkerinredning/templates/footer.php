@@ -1,7 +1,7 @@
 <footer class="content-info" role="contentinfo">
   <div class="container">
 
-    <?php if ( get_field('footer_text', 'option') ): ?>
+    <?php if ( function_exists('get_field') && get_field('footer_text', 'option') ): ?>
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
         <div class="footer__text">
@@ -12,7 +12,7 @@
     </div>
     <?php endif; ?>
 
-    <?php if( have_rows('footer_links', 'option') ): ?>
+    <?php if( function_exists('have_rows') && have_rows('footer_links', 'option') ): ?>
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
         <div class="footer__links">

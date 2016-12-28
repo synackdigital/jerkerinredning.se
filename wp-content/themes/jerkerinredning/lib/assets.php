@@ -179,12 +179,19 @@ if (GOOGLE_ANALYTICS_ID) {
  * Load up PHP parameters to make them available in js
  */
 function php_to_js_vars() {
-  $vars = array(
-    'ajaxurl' => admin_url( 'admin-ajax.php' ),
-    'instagram_client_id' => get_field('instagram_client_id', 'option'),
-    'instagram_user_id' => get_field('instagram_user_id', 'option'),
-    'instagram_access_token' => get_field('instagram_access_token', 'option')
-  );
-
-  return $vars;
+  if (function_exists('get_field')):
+    return array(
+      'ajaxurl' => admin_url( 'admin-ajax.php' ),
+      'instagram_client_id' => get_field('instagram_client_id', 'option'),
+      'instagram_user_id' => get_field('instagram_user_id', 'option'),
+      'instagram_access_token' => get_field('instagram_access_token', 'option')
+    );
+  else:
+    return array(
+      'ajaxurl' => admin_url( 'admin-ajax.php' ),
+      'instagram_client_id' => '',
+      'instagram_user_id' => '',
+      'instagram_access_token' => ''
+    );
+  endif;
 }
