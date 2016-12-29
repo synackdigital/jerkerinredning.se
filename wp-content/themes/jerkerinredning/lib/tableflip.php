@@ -26,7 +26,8 @@ function mail_tableflip_order() {
     $subject = 'En offertförfrågan från jerkerinredning.se';
 
     $message = array();
-    $message[] = 'En offertförfrågan skickades från <strong>'.$data['customer']['name'].'</strong> till '.$to.'.';
+
+    $message[] = 'En offertförfrågan skickades från <strong>'.$data['customer']['name'].'</strong> till '.implode('', $to).'.';
 
     if ($data['customer']['email'])
       $message[] = 'E-post: '.$data['customer']['email'];
