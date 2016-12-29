@@ -23,8 +23,9 @@ function mail_tableflip_order() {
       . 'Telefon: '.$data['customer']['phone'].'<br>'
       . 'E-post: '.$data['customer']['email'].'<br><br>'
       . '<strong>'.$data['order']['model']['name'].'</strong>, '
-      . $data['order']['material']['name'].' '
+      . $data['order']['material']['name'].' med '
       . $data['order']['finish']['name'].'<br><br>'
+      . 'Kundens meddelande: "' . $data['customer']['message'].'"<br><br>'
       . 'Bredd/längd: '.$data['order']['width'].'/'.$data['order']['length'].'<br>'
       . 'Angivet pris: '.$data['order']['price'].' '.$data['order']['currency'];
 

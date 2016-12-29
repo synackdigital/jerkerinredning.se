@@ -431,13 +431,15 @@
       var customerName = $('#tableflip__control__customer-name').val();
       var customerEmail = $('#tableflip__control__customer-email').val();
       var customerPhone = $('#tableflip__control__customer-phone').val();
+      var customerMessage = $('#tableflip__control__customer-message').val();
 
       // TODO: Proper validation
-      if (customerName && customerEmail && customerPhone) {
+      if ((customerEmail || customerPhone) && customerName) {
         return JSON.stringify({
           name: customerName,
           email: customerEmail,
-          phone: customerPhone
+          phone: customerPhone,
+          message: customerMessage
         }, null, '\t');
       } else {
         return false;

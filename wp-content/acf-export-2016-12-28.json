@@ -1,0 +1,1130 @@
+[
+    {
+        "key": "group_5862d71831063",
+        "title": "Best\u00e4llningar",
+        "fields": [
+            {
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "key": "field_5862d72838bf5",
+                "label": "E-postmottagare",
+                "name": "order_recipient_email",
+                "type": "email",
+                "instructions": "E-postadress till vilken best\u00e4llningar skickas.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                }
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "acf-options-options"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    },
+    {
+        "key": "group_559d1bab0f2e2",
+        "title": "Sidfot",
+        "fields": [
+            {
+                "default_value": "",
+                "new_lines": "wpautop",
+                "maxlength": "",
+                "placeholder": "",
+                "rows": 6,
+                "key": "field_559d1e66ec9ef",
+                "label": "Text",
+                "name": "footer_text",
+                "type": "textarea",
+                "instructions": "Dubbla radbrytningar blir nytt stycke",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "readonly": 0,
+                "disabled": 0
+            },
+            {
+                "sub_fields": [
+                    {
+                        "default_value": "",
+                        "maxlength": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "key": "field_559d1bc9e3c2c",
+                        "label": "L\u00e4nktext",
+                        "name": "link_label",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 1,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "readonly": 0,
+                        "disabled": 0
+                    },
+                    {
+                        "default_value": "",
+                        "placeholder": "",
+                        "key": "field_559d1c05e3c2d",
+                        "label": "L\u00e4nk-URL",
+                        "name": "link_url",
+                        "type": "url",
+                        "instructions": "",
+                        "required": 1,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        }
+                    }
+                ],
+                "min": 0,
+                "max": 0,
+                "layout": "table",
+                "button_label": "L\u00e4gg till l\u00e4nk",
+                "collapsed": "",
+                "key": "field_559d1bb4e3c2b",
+                "label": "L\u00e4nkar",
+                "name": "footer_links",
+                "type": "repeater",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                }
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "acf-options-options"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "left",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    },
+    {
+        "key": "group_54edd6ad7c717",
+        "title": "Sidsektioner",
+        "fields": [
+            {
+                "layouts": [
+                    {
+                        "key": "555c416d5a9c0",
+                        "name": "tagline",
+                        "label": "Rubrik",
+                        "display": "row",
+                        "sub_fields": [
+                            {
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "key": "field_559ee8263401d",
+                                "label": "ID",
+                                "name": "id",
+                                "type": "text",
+                                "instructions": "URL-v\u00e4nligt ID f\u00f6r sektionen",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "readonly": 0,
+                                "disabled": 0
+                            },
+                            {
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "key": "field_555c419f5a9c1",
+                                "label": "Rubriktext",
+                                "name": "headline",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "readonly": 0,
+                                "disabled": 0
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    {
+                        "key": "55532cd9bfe91",
+                        "name": "teasers",
+                        "label": "Spalter",
+                        "display": "row",
+                        "sub_fields": [
+                            {
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "key": "field_559ee4e828fe0",
+                                "label": "ID",
+                                "name": "id",
+                                "type": "text",
+                                "instructions": "URL-v\u00e4nligt ID f\u00f6r sektionen",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "readonly": 0,
+                                "disabled": 0
+                            },
+                            {
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "key": "field_559d389e77246",
+                                "label": "Rubrik",
+                                "name": "headline",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "readonly": 0,
+                                "disabled": 0
+                            },
+                            {
+                                "sub_fields": [
+                                    {
+                                        "default_value": "",
+                                        "maxlength": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "key": "field_55532d28bfe93",
+                                        "label": "Rubrik",
+                                        "name": "headline",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "readonly": 0,
+                                        "disabled": 0
+                                    },
+                                    {
+                                        "default_value": "",
+                                        "maxlength": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "key": "field_55532d3bbfe94",
+                                        "label": "Underrubrik",
+                                        "name": "subhead",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "readonly": 0,
+                                        "disabled": 0
+                                    },
+                                    {
+                                        "return_format": "array",
+                                        "preview_size": "thumbnail",
+                                        "library": "all",
+                                        "min_width": "",
+                                        "min_height": "",
+                                        "min_size": "",
+                                        "max_width": "",
+                                        "max_height": "",
+                                        "max_size": "",
+                                        "mime_types": "",
+                                        "key": "field_55532d43bfe95",
+                                        "label": "Bild",
+                                        "name": "image",
+                                        "type": "image",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        }
+                                    },
+                                    {
+                                        "default_value": "",
+                                        "new_lines": "wpautop",
+                                        "maxlength": "",
+                                        "placeholder": "",
+                                        "rows": "",
+                                        "key": "field_55532d5dbfe96",
+                                        "label": "Text",
+                                        "name": "text",
+                                        "type": "textarea",
+                                        "instructions": "Blankrad skapar nytt stycke",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "readonly": 0,
+                                        "disabled": 0
+                                    },
+                                    {
+                                        "post_type": [
+                                            "page"
+                                        ],
+                                        "taxonomy": [
+
+                                        ],
+                                        "allow_null": 0,
+                                        "multiple": 0,
+                                        "allow_archives": 1,
+                                        "key": "field_55532d9cbfe97",
+                                        "label": "L\u00e4nk",
+                                        "name": "link_url",
+                                        "type": "page_link",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        }
+                                    },
+                                    {
+                                        "default_value": "",
+                                        "maxlength": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "key": "field_5553d15220259",
+                                        "label": "L\u00e4nktext",
+                                        "name": "link_label",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "readonly": 0,
+                                        "disabled": 0
+                                    }
+                                ],
+                                "min": 1,
+                                "max": 4,
+                                "layout": "row",
+                                "button_label": "L\u00e4gg till spalt",
+                                "collapsed": "",
+                                "key": "field_55532ce6bfe92",
+                                "label": "Spalt",
+                                "name": "teaser",
+                                "type": "repeater",
+                                "instructions": "1-4 spalter som staplas p\u00e5 h\u00f6jden p\u00e5 mindre sk\u00e4rmar",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                }
+                            },
+                            {
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "choices": {
+                                    "narrow": "Smalare",
+                                    "default": "Standard",
+                                    "wide": "Bredare"
+                                },
+                                "default_value": {
+                                    "default": "default"
+                                },
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "key": "field_5653149896389",
+                                "label": "Maxbredd",
+                                "name": "max_width",
+                                "type": "select",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "disabled": 0,
+                                "readonly": 0
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    {
+                        "key": 5553304709489,
+                        "name": "instagram",
+                        "label": "Instagram-fl\u00f6de",
+                        "display": "row",
+                        "sub_fields": [
+                            {
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "key": "field_559ee84434020",
+                                "label": "ID",
+                                "name": "id",
+                                "type": "text",
+                                "instructions": "URL-v\u00e4nligt ID f\u00f6r sektionen",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "readonly": 0,
+                                "disabled": 0
+                            },
+                            {
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "key": "field_559d38f177249",
+                                "label": "Rubrik",
+                                "name": "headline",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "readonly": 0,
+                                "disabled": 0
+                            },
+                            {
+                                "default_value": 20,
+                                "min": 1,
+                                "max": 60,
+                                "step": 1,
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "key": "field_5553306b0948a",
+                                "label": "Antal bilder",
+                                "name": "limit",
+                                "type": "number",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "readonly": 0,
+                                "disabled": 0
+                            },
+                            {
+                                "layout": "horizontal",
+                                "choices": {
+                                    "thumbnail": "Tumnagel (150)",
+                                    "low_resolution": "L\u00e5guppl\u00f6st (320)",
+                                    "standard_resolution": "Standarduppl\u00f6st (640)"
+                                },
+                                "default_value": "low_resolution",
+                                "other_choice": 0,
+                                "save_other_choice": 0,
+                                "allow_null": 0,
+                                "return_format": "value",
+                                "key": "field_5553312c0948b",
+                                "label": "Storlek",
+                                "name": "resolution",
+                                "type": "radio",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                }
+                            },
+                            {
+                                "default_value": 1,
+                                "message": "L\u00e4nka bilder till Instagram.com",
+                                "ui": 0,
+                                "ui_on_text": "",
+                                "ui_off_text": "",
+                                "key": "field_5553319f0948c",
+                                "label": "L\u00e4nkar",
+                                "name": "links",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                }
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    {
+                        "key": "5575ab26e7cd8",
+                        "name": "tableflip",
+                        "label": "Bordskonfigurator",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "key": "field_559ee84c34021",
+                                "label": "ID",
+                                "name": "id",
+                                "type": "text",
+                                "instructions": "URL-v\u00e4nligt ID f\u00f6r sektionen",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "readonly": 0,
+                                "disabled": 0
+                            },
+                            {
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "key": "field_559d39047724a",
+                                "label": "Rubrik",
+                                "name": "headline",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "readonly": 0,
+                                "disabled": 0
+                            },
+                            {
+                                "sub_fields": [
+                                    {
+                                        "default_value": "",
+                                        "maxlength": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "key": "field_5579f594bc1ae",
+                                        "label": "Modell",
+                                        "name": "name",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "readonly": 0,
+                                        "disabled": 0
+                                    },
+                                    {
+                                        "return_format": "array",
+                                        "preview_size": "thumbnail",
+                                        "library": "all",
+                                        "min_width": "",
+                                        "min_height": "",
+                                        "min_size": "",
+                                        "max_width": "",
+                                        "max_height": "",
+                                        "max_size": "",
+                                        "mime_types": "",
+                                        "key": "field_5579f5a8bc1af",
+                                        "label": "Image",
+                                        "name": "image",
+                                        "type": "image",
+                                        "instructions": "",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        }
+                                    },
+                                    {
+                                        "default_value": "",
+                                        "min": "",
+                                        "max": "",
+                                        "step": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "key": "field_5579f657bc1b0",
+                                        "label": "Baspris",
+                                        "name": "base_price",
+                                        "type": "number",
+                                        "instructions": "",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "readonly": 0,
+                                        "disabled": 0
+                                    },
+                                    {
+                                        "default_value": "",
+                                        "min": "",
+                                        "max": "",
+                                        "step": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "key": "field_5579f6a5bc1b1",
+                                        "label": "Kvadratmeterpris",
+                                        "name": "sqm_price",
+                                        "type": "number",
+                                        "instructions": "",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "readonly": 0,
+                                        "disabled": 0
+                                    },
+                                    {
+                                        "default_value": "",
+                                        "min": "",
+                                        "max": "",
+                                        "step": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "key": "field_5579f701bc1b3",
+                                        "label": "Minsta bredd",
+                                        "name": "min_width",
+                                        "type": "number",
+                                        "instructions": "(mm)",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "readonly": 0,
+                                        "disabled": 0
+                                    },
+                                    {
+                                        "default_value": "",
+                                        "min": "",
+                                        "max": "",
+                                        "step": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "key": "field_5579f714bc1b4",
+                                        "label": "St\u00f6rsta bredd",
+                                        "name": "max_width",
+                                        "type": "number",
+                                        "instructions": "(mm)",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "readonly": 0,
+                                        "disabled": 0
+                                    },
+                                    {
+                                        "default_value": "",
+                                        "min": "",
+                                        "max": "",
+                                        "step": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "key": "field_5579f72fbc1b6",
+                                        "label": "Minsta l\u00e4ngd",
+                                        "name": "min_length",
+                                        "type": "number",
+                                        "instructions": "(mm)",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "readonly": 0,
+                                        "disabled": 0
+                                    },
+                                    {
+                                        "default_value": "",
+                                        "min": "",
+                                        "max": "",
+                                        "step": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "key": "field_5579f73cbc1b7",
+                                        "label": "St\u00f6rsta l\u00e4ngd",
+                                        "name": "max_length",
+                                        "type": "number",
+                                        "instructions": "(mm)",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "readonly": 0,
+                                        "disabled": 0
+                                    }
+                                ],
+                                "min": 0,
+                                "max": 0,
+                                "layout": "table",
+                                "button_label": "Add Model",
+                                "collapsed": "",
+                                "key": "field_5579f575bc1ad",
+                                "label": "Modeller",
+                                "name": "models",
+                                "type": "repeater",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                }
+                            },
+                            {
+                                "sub_fields": [
+                                    {
+                                        "default_value": "",
+                                        "maxlength": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "key": "field_5579f95ec3da7",
+                                        "label": "Name",
+                                        "name": "name",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "readonly": 0,
+                                        "disabled": 0
+                                    },
+                                    {
+                                        "return_format": "array",
+                                        "preview_size": "thumbnail",
+                                        "library": "all",
+                                        "min_width": "",
+                                        "min_height": "",
+                                        "min_size": "",
+                                        "max_width": "",
+                                        "max_height": "",
+                                        "max_size": "",
+                                        "mime_types": "",
+                                        "key": "field_5579f97cc3da8",
+                                        "label": "Image",
+                                        "name": "image",
+                                        "type": "image",
+                                        "instructions": "",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        }
+                                    },
+                                    {
+                                        "default_value": "",
+                                        "min": "",
+                                        "max": "",
+                                        "step": ".1",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "key": "field_5579f998c3da9",
+                                        "label": "Prisfaktor",
+                                        "name": "price_modifier",
+                                        "type": "number",
+                                        "instructions": "Multipliceras med kvadratmeterpriset",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "readonly": 0,
+                                        "disabled": 0
+                                    },
+                                    {
+                                        "default_value": "",
+                                        "new_lines": "",
+                                        "maxlength": "",
+                                        "placeholder": "",
+                                        "rows": 4,
+                                        "key": "field_55df16cf03402",
+                                        "label": "Visa ej f\u00f6r modell",
+                                        "name": "disable_for_model",
+                                        "type": "textarea",
+                                        "instructions": "Skriv ett modellnamn f\u00f6r att ta bort materialet fr\u00e5n modellen. Separera flera modellnamn med radbrytning",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "readonly": 0,
+                                        "disabled": 0
+                                    }
+                                ],
+                                "min": 0,
+                                "max": 0,
+                                "layout": "table",
+                                "button_label": "L\u00e4gg till material",
+                                "collapsed": "",
+                                "key": "field_5579f94fc3da6",
+                                "label": "Material",
+                                "name": "materials",
+                                "type": "repeater",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                }
+                            },
+                            {
+                                "sub_fields": [
+                                    {
+                                        "default_value": "",
+                                        "maxlength": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "key": "field_5579fccba4fcb",
+                                        "label": "Name",
+                                        "name": "name",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "readonly": 0,
+                                        "disabled": 0
+                                    },
+                                    {
+                                        "default_value": "",
+                                        "min": "",
+                                        "max": "",
+                                        "step": ".1",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "key": "field_5579fce2a4fcc",
+                                        "label": "Prisfaktor",
+                                        "name": "price_modifier",
+                                        "type": "number",
+                                        "instructions": "Multipliceras med kvadratmeterpriset",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "readonly": 0,
+                                        "disabled": 0
+                                    }
+                                ],
+                                "min": 0,
+                                "max": 0,
+                                "layout": "table",
+                                "button_label": "L\u00e4gg till ytbehandling",
+                                "collapsed": "",
+                                "key": "field_5579fcbaa4fca",
+                                "label": "Ytbehandlingar",
+                                "name": "finishes",
+                                "type": "repeater",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                }
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    }
+                ],
+                "min": "",
+                "max": "",
+                "button_label": "L\u00e4gg till sektion",
+                "key": "field_54edd6b86b4b5",
+                "label": "Sektioner",
+                "name": "page_sections",
+                "type": "flexible_content",
+                "instructions": "Dra och sl\u00e4pp f\u00f6r att \u00e4ndra ordning",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "acf-page-sections",
+                    "id": ""
+                }
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "seamless",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    },
+    {
+        "key": "group_550fd513c4e46",
+        "title": "Integration",
+        "fields": [
+            {
+                "default_value": "",
+                "maxlength": 10,
+                "placeholder": "UA-XXXXX-Y",
+                "prepend": "",
+                "append": "",
+                "key": "field_550fd54dda280",
+                "label": "Google Universal Analytics ID",
+                "name": "google_analytics_id",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "readonly": 0,
+                "disabled": 0
+            },
+            {
+                "default_value": "",
+                "maxlength": 32,
+                "placeholder": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "prepend": "",
+                "append": "",
+                "key": "field_551028e2e7f40",
+                "label": "Instagram Client ID",
+                "name": "instagram_client_id",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "readonly": 0,
+                "disabled": 0
+            },
+            {
+                "default_value": "",
+                "maxlength": 9,
+                "placeholder": "XXXXXXXXX",
+                "prepend": "",
+                "append": "",
+                "key": "field_550fdafa1c25d",
+                "label": "Instagram User ID",
+                "name": "instagram_user_id",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "readonly": 0,
+                "disabled": 0
+            },
+            {
+                "default_value": "",
+                "maxlength": 88,
+                "placeholder": "XXXXXXXXX.YYYYYYY.ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ",
+                "prepend": "",
+                "append": "",
+                "key": "field_550fdb431c25e",
+                "label": "Instagram Access Token",
+                "name": "instagram_access_token",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "readonly": 0,
+                "disabled": 0
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "acf-options-options"
+                }
+            ]
+        ],
+        "menu_order": 1,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "left",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    }
+]

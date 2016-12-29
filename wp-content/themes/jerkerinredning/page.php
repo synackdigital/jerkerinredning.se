@@ -10,7 +10,7 @@ while (have_posts()) : the_post();
   if (get_the_content())
     get_template_part('templates/content', 'page');
 
-  if (have_rows('page_sections')) :
+  if (function_exists('have_rows') && have_rows('page_sections')) :
     while (have_rows('page_sections')) : the_row();
       get_template_part('templates/page_section', get_row_layout());
     endwhile;
