@@ -72,15 +72,19 @@
           <span class="input-group-addon" style="min-width:6em;text-align:left;">E-post</span>
           <input type="email" class="form-control" id="tableflip__control__customer-email">
         </div>
-        <div class="input-group" style="margin-bottom:1em">
+        <div class="input-group" style="margin-bottom:0.5em">
           <span class="input-group-addon" style="min-width:6em;text-align:left;">Telefon</span>
           <input type="email" class="form-control" id="tableflip__control__customer-phone">
+        </div>
+        <div style="margin-bottom:1em">
+          <label for="tableflip__control__customer-message">Dina önskemål eller synpunkter</label>
+          <textarea class="form-control" id="tableflip__control__customer-message" rows="4"></textarea>
         </div>
         <button class="tableflip__control tableflip__control--order btn btn-lg btn-block">Skicka offertförfrågan</button>
       </div>
 
       <div class="tableflip__thankyou">
-        <h3>Tack för din beställning</h3>
+        <h3>Tack för din förfrågan</h3>
         <p>Vi återkommer till dig för en bekräftelse inom kort.</p>
       </div>
     </div>
