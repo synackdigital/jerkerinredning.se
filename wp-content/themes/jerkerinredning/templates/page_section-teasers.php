@@ -32,7 +32,7 @@ if ( $teasers_count > 0 ) : ?>
           $headline   = get_sub_field('headline');
           $subhead    = get_sub_field('subhead');
           $text       = get_sub_field('text');
-          $link_url   = get_sub_field('link_url');
+          $link_url   = ( get_sub_field('link_url') ) ? get_sub_field('link_url') : get_sub_field('link_url_2');
           $link_label = get_sub_field('link_label');
       ?>
       <div class="<?= implode(' ', $column_classes); ?>">
